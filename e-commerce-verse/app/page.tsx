@@ -1,11 +1,7 @@
 import Image from "next/image";
-
-
-
-const urlEndpoint = process.env.IMAGE_KIT_URL;
-
-
 // import {connectDB} from "../lib/dbconnect";
+
+
 export default async function Home() {
 
   // const db = await connectDB();
