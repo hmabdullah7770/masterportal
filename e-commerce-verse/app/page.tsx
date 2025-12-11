@@ -1,11 +1,26 @@
 import Image from "next/image";
-// import {connectDB} from "../lib/dbconnect";
-
+import { connectDB } from "../lib/dbconnect";
+import User from "../models/MasterPortal";
 
 export default async function Home() {
+  const db = await connectDB();
+  console.log("DB connected:", db.connection.name);
 
-  // const db = await connectDB();
-  // console.log(db);
+  try {
+    const existingUser = await User.findOne({ email: "john@example.com" });
+    if (!existingUser) {
+      const john = new User({
+        name: "John",
+        email: "john@example.com",
+      });
+      await john.save();
+      console.log("Mock user John created:", john);
+    } else {
+      console.log("Mock user John already exists:", existingUser);
+    }
+  } catch (err) {
+    console.error("Error creating mock user:", err);
+  }
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
@@ -106,7 +121,6 @@ export default async function Home() {
   );
 }
 
-
 // import Image from "next/image";
 // import {connectDB} from "../lib/dbconnect";
 // import mongoose from 'mongoose';
@@ -134,7 +148,7 @@ export default async function Home() {
 //   }
 
 //   console.log(`Connected to database: ${db.name}, State: ${db.readyState}`);
-  
+
 //   // List all collections in the database
 //   const collections = await db.db.listCollections().toArray();
 //   console.log('Available collections:', collections.map(col => col.name));

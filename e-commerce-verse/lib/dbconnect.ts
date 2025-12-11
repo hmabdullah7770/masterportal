@@ -1,5 +1,6 @@
 // /lib/dbconnect.ts
 import mongoose from "mongoose";
+import  {DB_NAME}  from "../constants";
 
 const MONGODB_URI = process.env.MONGODB_URI as string;
 if (!MONGODB_URI) {
@@ -18,7 +19,11 @@ export async function connectDB() {
   }
   if (!cached.promise) {
     const opts = { bufferCommands: false };
-    cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => mongoose);
+  
+    cached.promise = mongoose.connect(MONGODB_URI, {
+        ...opts,
+        dbName: DB_NAME,   // <--- Here your constant DB is used correctly
+      }).then((mongoose) => mongoose);
   }
   cached.conn = await cached.promise;
   return cached.conn;

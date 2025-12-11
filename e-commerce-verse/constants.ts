@@ -1,1 +1,1 @@
-export const DB_NAME = 'incompass2'
+export const DB_NAME = 'MyTube'
