@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Master Portal - OTA Updates</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary": "#ffffff",
+                        "secondary-fixed-dim": "#c0c6db",
+                        "secondary-fixed": "#dce2f7",
+                        "primary-container": "#7c3aed",
+                        "surface-variant": "#e8dfee",
+                        "error-container": "#ffdad6",
+                        "on-surface-variant": "#4a4455",
+                        "surface-dim": "#dfd7e6",
+                        "primary-fixed-dim": "#d2bbff",
+                        "surface-container-high": "#ede5f4",
+                        "primary-fixed": "#eaddff",
+                        "inverse-primary": "#d2bbff",
+                        "tertiary-fixed": "#ffdcc6",
+                        "primary": "#630ed4",
+                        "outline-variant": "#ccc3d8",
+                        "on-tertiary-container": "#ffe0cd",
+                        "surface-bright": "#fef7ff",
+                        "surface-tint": "#732ee4",
+                        "tertiary-fixed-dim": "#ffb784",
+                        "surface": "#fef7ff",
+                        "inverse-surface": "#332f39",
+                        "error": "#ba1a1a",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#7d3d00",
+                        "secondary": "#575e70",
+                        "on-tertiary-fixed-variant": "#713700",
+                        "on-surface": "#1d1a24",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-background": "#1d1a24",
+                        "outline": "#7b7487",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#ede0ff",
+                        "on-tertiary-fixed": "#301400",
+                        "on-secondary-container": "#5c6274",
+                        "on-primary-fixed": "#25005a",
+                        "on-primary-fixed-variant": "#5a00c6",
+                        "on-error": "#ffffff",
+                        "surface-container": "#f3ebfa",
+                        "background": "#fef7ff",
+                        "surface-container-highest": "#e8dfee",
+                        "inverse-on-surface": "#f6eefc",
+                        "secondary-container": "#d9dff5",
+                        "on-secondary-fixed-variant": "#404758",
+                        "on-secondary-fixed": "#141b2b",
+                        "tertiary-container": "#a15100",
+                        "surface-container-low": "#f9f1ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sidebar_width": "260px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "xl": "40px",
+                        "header_height": "64px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "container_max_width": "1280px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "sans": ['Inter', 'sans-serif']
+                    },
+                    "fontSize": {
+                        "h3": ["20px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "h2": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "h1": ["30px", {"lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "display": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #F8F9FA; }
+    </style>
+</head>
+<body class="text-on-background flex h-screen overflow-hidden">
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 h-screen w-[260px] bg-surface dark:bg-surface-container-lowest border-r border-outline-variant dark:border-outline flex flex-col h-full py-lg overflow-y-auto z-50">
+<div class="px-6 mb-8">
+<h1 class="font-h3 text-h3 font-semibold text-primary dark:text-primary-fixed">Master Portal</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Admin Control</p>
+</div>
+<div class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-body-sm text-body-sm">Home</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-sm text-body-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="edit_note">edit_note</span>
+<span class="font-body-sm text-body-sm">UI Manager</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="settings_applications">settings_applications</span>
+<span class="font-body-sm text-body-sm">Functionality Manager</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-body-sm text-body-sm">User Management</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="devices">devices</span>
+<span class="font-body-sm text-body-sm">Device Info</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="auto_renew">autorenew</span>
+<span class="font-body-sm text-body-sm">Subscriptions</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="ads_click">ads_click</span>
+<span class="font-body-sm text-body-sm">Ads Manager</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="api">api</span>
+<span class="font-body-sm text-body-sm">API Control</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-body-sm text-body-sm">App Logs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+<span class="font-body-sm text-body-sm">Server Logs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="database">database</span>
+<span class="font-body-sm text-body-sm">Database Performance</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+<span class="font-body-sm text-body-sm">AI Manager</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="key">key</span>
+<span class="font-body-sm text-body-sm">Permissions</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-body-sm text-body-sm">Revenue</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="star">star</span>
+<span class="font-body-sm text-body-sm">Ratings &amp; Shares</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+<span class="font-body-sm text-body-sm">Payment Gateway</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-primary dark:text-primary-fixed bg-primary-container/10 dark:bg-primary-container/20 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="system_update">system_update</span>
+<span class="font-body-sm text-body-sm">OTA Updates</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Wrapper -->
+<div class="flex-1 ml-[260px] flex flex-col h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 h-[64px] z-40 w-[calc(100%-260px)] bg-surface dark:bg-surface-container-lowest border-b border-outline-variant dark:border-outline shadow-sm dark:shadow-none flex items-center justify-between px-lg">
+<div class="flex items-center gap-4 w-1/3">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-lowest border border-outline-variant rounded-full font-body-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Search..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all focus:ring-2 focus:ring-primary/20">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-primary-container/20 overflow-hidden border border-outline-variant flex items-center justify-center">
+<img alt="Admin Avatar" class="w-full h-full object-cover" data-alt="A small circular avatar image showing a professional headshot of a person against a neutral background. The lighting is soft and flattering, suitable for a corporate SaaS dashboard profile icon." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0u0SGNglWkfN3d5nyRxUDL2n3M1cUy75DRnszG1vaUZQ6-mdbKSeR0VfNQ8zu-dz9opsy5GTTXvhB3EW6h0kEOjhp_utrRs64Wg9SW5GX8QoJa7LKjGDNFVj5kqpw60-CwX_WNegNKdYdtZAMAlWt87w_17c96J_95qCAWsR62jSnHvYPwv_LrBkCVHkWfiCxyYeOoCRaLOy6P_3vCkl5_ti1Ay-LK7uthxdBL_0p7FQcwTItyPR10N12kN2INVCCMwORb9XQseo"/>
+</div>
+</div>
+</header>
+<!-- Page Canvas -->
+<main class="flex-1 mt-[64px] p-lg overflow-y-auto bg-[#F8F9FA]">
+<div class="max-w-[1280px] mx-auto space-y-lg">
+<!-- Header -->
+<div class="mb-8">
+<h2 class="font-h1 text-h1 text-on-surface">OTA Updates</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Manage over-the-air deployments and track version adoption.</p>
+</div>
+<!-- Top Cards Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Expo OTA Card -->
+<div class="bg-surface-container-lowest rounded-xl p-6 border border-outline-variant shadow-[0_4px_12px_rgba(0,0,0,0.03)] border-l-[4px] border-l-[#3b82f6] flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-surface-container-highest rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-[#3b82f6]">app_shortcut</span>
+</div>
+<div>
+<h3 class="font-h3 text-h3 text-on-surface">Expo OTA</h3>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-blue-100 text-blue-800 font-label-sm text-label-sm mt-1">Production Channel</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-6">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-1">Current Version</p>
+<p class="font-h2 text-h2 text-on-surface">v2.4.1</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-1">Last Updated</p>
+<p class="font-body-md text-body-md text-on-surface">Oct 24, 2023</p>
+</div>
+</div>
+</div>
+<button class="w-full py-2 px-4 bg-surface-container-lowest border border-outline rounded-full font-label-md text-label-md text-on-surface hover:bg-surface-container-low transition-colors text-center">
+                            Open Expo Dashboard
+                        </button>
+</div>
+<!-- Android Custom OTA Card -->
+<div class="bg-surface-container-lowest rounded-xl p-6 border border-outline-variant shadow-[0_4px_12px_rgba(0,0,0,0.03)] border-l-[4px] border-l-[#10b981] flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-surface-container-highest rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-[#10b981]">android</span>
+</div>
+<div>
+<h3 class="font-h3 text-h3 text-on-surface">Android Custom</h3>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-green-100 text-green-800 font-label-sm text-label-sm mt-1">Direct APK Update</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-4 mb-6">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-1">Version</p>
+<p class="font-h2 text-h2 text-on-surface">v1.8.0</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-1">Size</p>
+<p class="font-body-md text-body-md text-on-surface">42.5 MB</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-1">Date</p>
+<p class="font-body-md text-body-md text-on-surface">Nov 02, 2023</p>
+</div>
+</div>
+</div>
+<button class="w-full py-2 px-4 bg-primary text-on-primary rounded-full font-label-md text-label-md hover:opacity-90 transition-opacity text-center">
+                            Push New Update
+                        </button>
+</div>
+</div>
+<!-- Middle: Update History Table -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.03)] overflow-hidden">
+<div class="p-6 border-b border-outline-variant flex items-center justify-between bg-surface-container-lowest">
+<h3 class="font-h3 text-h3 text-on-surface">Update History</h3>
+<div class="flex gap-3">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm">search</span>
+<input class="pl-9 pr-3 py-1.5 bg-surface border border-outline-variant rounded-md font-body-sm text-on-surface focus:outline-none focus:border-primary text-sm" placeholder="Search versions..." type="text"/>
+</div>
+<button class="flex items-center gap-2 px-3 py-1.5 border border-outline-variant rounded-md font-label-sm text-label-sm text-on-surface hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+                                Filter
+                            </button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface border-b border-outline-variant">
+<th class="py-3 px-6 font-label-md text-label-md text-on-surface-variant font-medium">Version</th>
+<th class="py-3 px-6 font-label-md text-label-md text-on-surface-variant font-medium">Type</th>
+<th class="py-3 px-6 font-label-md text-label-md text-on-surface-variant font-medium">Release Date</th>
+<th class="py-3 px-6 font-label-md text-label-md text-on-surface-variant font-medium">Pushed By</th>
+<th class="py-3 px-6 font-label-md text-label-md text-on-surface-variant font-medium">Status</th>
+<th class="py-3 px-6 font-label-md text-label-md text-on-surface-variant font-medium">Release Notes</th>
+<th class="py-3 px-6 font-label-md text-label-md text-on-surface-variant font-medium text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm text-on-surface">
+<tr class="border-b border-outline-variant/50 hover:bg-surface-container-low/50">
+<td class="py-3 px-6 font-semibold">v2.4.1</td>
+<td class="py-3 px-6"><span class="inline-flex items-center px-2 py-0.5 rounded-full bg-blue-100 text-blue-800 text-xs font-medium">Expo OTA</span></td>
+<td class="py-3 px-6 text-on-surface-variant">Oct 24, 2023</td>
+<td class="py-3 px-6">
+<div class="flex items-center gap-2">
+<img alt="User" class="w-6 h-6 rounded-full" data-alt="Small circular avatar of a female admin user." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCquG2En9dXJdHhP7ajvZVMbCJY7-DsojN2VnVE5KQbdOhzbkuDOrbFMpliMQ3FWCl2WpISQpa5wfLhriX3IU1aLWpiK1FlcQ_6gr0hNT1Y3q5EVUGKIWMvXPAwD62kZKsfObKk1U-OeYlV5zlBLO1JisIi0NwCb13a8T6Bw4j_x79pM8OYkwgmpKeIfrx9Ux6i8MWTwV2UEG82aA9YhMqqj_j7itT4-0GO-vetzS2ySqVc9KuQ_Sq2UiGONUhixzD5RcvdvQc1ncQ"/>
+<span>S. Connor</span>
+</div>
+</td>
+<td class="py-3 px-6"><span class="inline-flex items-center px-2 py-0.5 rounded-full bg-green-100 text-green-800 text-xs font-medium">Active</span></td>
+<td class="py-3 px-6 text-on-surface-variant truncate max-w-[200px]">Minor bug fixes and performance improvements in feed...</td>
+<td class="py-3 px-6 text-right">
+<button class="px-3 py-1 border border-error text-error rounded-full text-xs font-medium hover:bg-error/10 transition-colors">Rollback</button>
+</td>
+</tr>
+<tr class="border-b border-outline-variant/50 hover:bg-surface-container-low/50 bg-[#F9FAFB]">
+<td class="py-3 px-6 font-semibold">v1.8.0</td>
+<td class="py-3 px-6"><span class="inline-flex items-center px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-medium">Android APK</span></td>
+<td class="py-3 px-6 text-on-surface-variant">Nov 02, 2023</td>
+<td class="py-3 px-6">
+<div class="flex items-center gap-2">
+<img alt="User" class="w-6 h-6 rounded-full" data-alt="Small circular avatar of a male admin user." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHHwkxfL5W8IEELCqta_J9uLQkBAt2IJJALCwxa9DxRUs_jsKK6hfIakoH-_PNp7WZ_ahYYC5_kInnTBrHYeT1AX4BSAy8zTk3I-KCsJ9COecKD9c9zNJmi5adid-9rvX13Y71E1RJHfm7Tsalv_mIZxCHHEaUCm2qcqdZXIkilyW8FftiIMpYNfo7wAQWl1-oaEyyZdYWpLJU3NRTKuCM8Ar747D3b2CZBx3L8YcFbbppn8BzjHD52K4ooRQiauURqvxqIAqDqdU"/>
+<span>J. Reese</span>
+</div>
+</td>
+<td class="py-3 px-6"><span class="inline-flex items-center px-2 py-0.5 rounded-full bg-green-100 text-green-800 text-xs font-medium">Active</span></td>
+<td class="py-3 px-6 text-on-surface-variant truncate max-w-[200px]">Major UI overhaul for settings screen, added dark mo...</td>
+<td class="py-3 px-6 text-right">
+<button class="px-3 py-1 border border-error text-error rounded-full text-xs font-medium hover:bg-error/10 transition-colors">Rollback</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50">
+<td class="py-3 px-6 font-semibold text-on-surface-variant">v2.4.0</td>
+<td class="py-3 px-6"><span class="inline-flex items-center px-2 py-0.5 rounded-full bg-blue-100 text-blue-800 text-xs font-medium opacity-70">Expo OTA</span></td>
+<td class="py-3 px-6 text-on-surface-variant">Oct 15, 2023</td>
+<td class="py-3 px-6 text-on-surface-variant">
+<div class="flex items-center gap-2">
+<img alt="User" class="w-6 h-6 rounded-full opacity-70" data-alt="Small circular avatar of a female admin user." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSKaIauxFp_nSKnLPWC_zE5fywF9BR_52W6wdHBmlJsq-m1fgK5cbs2bYqnvsXQ_I3gZaG9D7iPOcUiCEE8mecoyGsvPIl0YmOSJAMBYavVR4OTHNMrsR9WN3Fg1HGd6FwYtvDc09gCmJRmizofETMHlMv8vYcd-ueekn01XbOsv5_-Fv2QykmyZUdsqD-foGT81SqmQy0yx9pXLCTenh5SiEosnxBcIuz8-KJwRiFwAriwrpgGOWcTZqCRwoLT68RMKkTuXcCPCo"/>
+<span>S. Connor</span>
+</div>
+</td>
+<td class="py-3 px-6"><span class="inline-flex items-center px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant text-xs font-medium">Replaced</span></td>
+<td class="py-3 px-6 text-on-surface-variant truncate max-w-[200px]">Initial release of new feed feature.</td>
+<td class="py-3 px-6 text-right">
+<span class="text-xs text-outline italic">Unavailable</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Bottom: Version Adoption -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-[0_4px_12px_rgba(0,0,0,0.03)]">
+<h3 class="font-h3 text-h3 text-on-surface mb-6">Version Adoption</h3>
+<div class="flex items-center justify-center gap-12">
+<!-- Abstract Donut Chart Representation -->
+<div class="relative w-48 h-48 rounded-full border-[24px] border-surface-container-highest" style="background: conic-gradient(#7c3aed 0% 65%, #3b82f6 65% 85%, #10b981 85% 100%); border-color: transparent;">
+<div class="absolute inset-0 m-auto w-32 h-32 bg-surface-container-lowest rounded-full flex flex-col items-center justify-center shadow-inner">
+<span class="font-display text-display text-on-surface">85k</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Total Users</span>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<div class="w-4 h-4 rounded-full bg-[#7c3aed]"></div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">v2.4.1 (Latest)</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">65% · 55,250 users</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-4 h-4 rounded-full bg-[#3b82f6]"></div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">v2.4.0</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">20% · 17,000 users</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-4 h-4 rounded-full bg-[#10b981]"></div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Older Versions</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">15% · 12,750 users</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

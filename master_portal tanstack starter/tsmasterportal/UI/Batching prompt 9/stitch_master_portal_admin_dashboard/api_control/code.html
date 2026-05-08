@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Master Portal - API Control</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .mono-font { font-family: 'JetBrains Mono', monospace; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed": "#ffdcc6",
+                      "on-error": "#ffffff",
+                      "inverse-surface": "#332f39",
+                      "outline": "#7b7487",
+                      "surface-bright": "#fef7ff",
+                      "on-surface-variant": "#4a4455",
+                      "inverse-on-surface": "#f6eefc",
+                      "on-surface": "#1d1a24",
+                      "tertiary-fixed-dim": "#ffb784",
+                      "secondary-fixed": "#dce2f7",
+                      "on-secondary-container": "#5c6274",
+                      "on-primary-container": "#ede0ff",
+                      "secondary": "#575e70",
+                      "on-tertiary-fixed": "#301400",
+                      "surface-variant": "#e8dfee",
+                      "surface-tint": "#732ee4",
+                      "secondary-fixed-dim": "#c0c6db",
+                      "primary-container": "#7c3aed",
+                      "primary-fixed-dim": "#d2bbff",
+                      "inverse-primary": "#d2bbff",
+                      "surface": "#fef7ff",
+                      "surface-container-low": "#f9f1ff",
+                      "error": "#ba1a1a",
+                      "error-container": "#ffdad6",
+                      "tertiary-container": "#a15100",
+                      "surface-container-highest": "#e8dfee",
+                      "surface-container": "#f3ebfa",
+                      "on-error-container": "#93000a",
+                      "on-secondary": "#ffffff",
+                      "on-background": "#1d1a24",
+                      "on-primary-fixed": "#25005a",
+                      "background": "#f8f9fa", /* Overridden per requirement */
+                      "on-tertiary-container": "#ffe0cd",
+                      "primary": "#630ed4",
+                      "tertiary": "#7d3d00",
+                      "primary-fixed": "#eaddff",
+                      "on-tertiary": "#ffffff",
+                      "surface-container-high": "#ede5f4",
+                      "outline-variant": "#e5e7eb", /* Overridden to match border gray */
+                      "on-secondary-fixed": "#141b2b",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-fixed-variant": "#713700",
+                      "surface-dim": "#dfd7e6",
+                      "on-secondary-fixed-variant": "#404758",
+                      "secondary-container": "#d9dff5",
+                      "on-primary-fixed-variant": "#5a00c6",
+                      "on-primary": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "sidebar_width": "260px",
+                      "xs": "4px",
+                      "header_height": "64px",
+                      "xl": "40px",
+                      "unit": "4px",
+                      "container_max_width": "1280px",
+                      "lg": "24px",
+                      "md": "16px",
+                      "sm": "8px"
+              },
+              "fontFamily": {},
+              "fontSize": {
+                      "h3": ["20px", { "lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                      "label-sm": ["12px", { "lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                      "label-md": ["14px", { "lineHeight": "1.2", "fontWeight": "500" }],
+                      "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                      "h2": ["24px", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                      "h1": ["30px", { "lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                      "display": ["36px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                      "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                      "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
+              }
+            }
+          }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex">
+<!-- SideNavBar Component -->
+<nav class="fixed left-0 top-0 h-screen w-sidebar_width bg-surface-container-lowest border-r border-outline-variant flex flex-col py-lg overflow-y-auto z-50">
+<div class="px-lg mb-8">
+<h3 class="font-h3 text-h3 text-primary">Master Portal</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Admin Control</p>
+</div>
+<div class="flex flex-col gap-1 px-4 font-body-sm text-body-sm">
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#"><span class="material-symbols-outlined" data-icon="home">home</span> Home</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#"><span class="material-symbols-outlined" data-icon="dashboard">dashboard</span> Dashboard</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#"><span class="material-symbols-outlined" data-icon="edit_note">edit_note</span> UI Manager</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#"><span class="material-symbols-outlined" data-icon="settings_applications">settings_applications</span> Functionality Manager</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#"><span class="material-symbols-outlined" data-icon="group">group</span> User Management</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#"><span class="material-symbols-outlined" data-icon="devices">devices</span> Device Info</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#"><span class="material-symbols-outlined" data-icon="auto_renew">autorenew</span> Subscriptions</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#"><span class="material-symbols-outlined" data-icon="ads_click">ads_click</span> Ads Manager</a>
+<!-- Active Tab -->
+<a class="flex items-center gap-3 px-4 py-2 text-primary bg-primary-container/10 rounded-lg opacity-90 scale-[0.98] transition-transform" href="#"><span class="material-symbols-outlined" data-icon="api">api</span> API Control</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#"><span class="material-symbols-outlined" data-icon="description">description</span> App Logs</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#"><span class="material-symbols-outlined" data-icon="terminal">terminal</span> Server Logs</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#"><span class="material-symbols-outlined" data-icon="database">database</span> Database Performance</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#"><span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span> AI Manager</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#"><span class="material-symbols-outlined" data-icon="key">key</span> Permissions</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#"><span class="material-symbols-outlined" data-icon="payments">payments</span> Revenue</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#"><span class="material-symbols-outlined" data-icon="star">star</span> Ratings &amp; Shares</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#"><span class="material-symbols-outlined" data-icon="account_balance">account_balance</span> Payment Gateway</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#"><span class="material-symbols-outlined" data-icon="system_update">system_update</span> OTA Updates</a>
+</div>
+</nav>
+<!-- TopAppBar Component -->
+<header class="fixed top-0 right-0 h-[64px] z-40 bg-surface-container-lowest border-b border-outline-variant shadow-sm flex items-center justify-between px-lg w-[calc(100%-260px)] ml-auto font-body-md text-body-md text-primary">
+<div class="flex items-center gap-4 w-1/3">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-high border-none rounded-full py-2 pl-10 pr-4 text-on-surface text-sm focus:ring-2 focus:ring-primary/20 transition-all outline-none" placeholder="Search Master Portal..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full text-on-surface-variant hover:bg-surface-container-low transition-all focus:ring-2 focus:ring-primary/20"><span class="material-symbols-outlined" data-icon="notifications">notifications</span></button>
+<div class="w-8 h-8 rounded-full bg-primary/20 overflow-hidden border border-outline-variant">
+<img alt="Admin Avatar" class="w-full h-full object-cover" data-alt="A small circular avatar image of a professional administrator, neutral lighting, corporate style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXqUOLgW3PpEnHW_GrWqgvpQVyvd1n8c_pGdePUhlN7zP0VoVqogulzh8DSvY0B7xfUGGoakkxGxnvMkFGzMb3r3u74mXo_YbgcUNvd3VFgJr6rQSIKMBQy2Eg6j69ZguFudPCMSrr6RRQRORnj0btZvMcuHIVKfaMx5VCLENWfFHpFJlzvOPl1OexAtXXfqeooE4ohBkLdlWMdKo5Q8vMrvQUOs-lt82G9leCj1bFpp-iAaoy8MIByFUqONJpTVA8FLiMO2-Fyc0"/>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="ml-[260px] mt-[64px] flex-1 p-lg max-w-container_max_width w-full">
+<!-- Header Section -->
+<div class="flex justify-between items-center mb-8">
+<h1 class="font-h1 text-h1 text-on-surface">API Control</h1>
+<button class="bg-primary-container text-on-primary bg-[#7C3AED] hover:bg-[#6D28D9] px-6 py-2.5 rounded-full font-label-md text-label-md transition-colors flex items-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-[18px]">add</span> Add New Endpoint
+            </button>
+</div>
+<!-- Search/Filter Card -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-[0px_4px_12px_rgba(0,0,0,0.03)] p-4 mb-6">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">filter_list</span>
+<input class="w-full bg-surface border border-outline-variant rounded-lg py-2.5 pl-10 pr-4 font-body-sm text-body-sm text-on-surface focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none" placeholder="Filter endpoints by name, URL, or category..." type="text"/>
+</div>
+</div>
+<!-- Endpoints List Card -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-[0px_4px_12px_rgba(0,0,0,0.03)] overflow-hidden">
+<!-- Table Header -->
+<div class="grid grid-cols-[2fr_3fr_1fr_1fr_1.5fr_auto] gap-4 px-6 py-4 border-b border-outline-variant bg-[#F9FAFB] font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">
+<div>API Name</div>
+<div>Endpoint URL</div>
+<div>Category</div>
+<div>Status</div>
+<div>Last Used</div>
+<div class="w-10 text-center">Actions</div>
+</div>
+<!-- Row 1 (Auth) -->
+<div class="grid grid-cols-[2fr_3fr_1fr_1fr_1.5fr_auto] gap-4 px-6 py-4 border-b border-outline-variant items-center hover:bg-primary-fixed/30 transition-colors group">
+<div class="font-body-md text-body-md font-semibold text-on-surface">User Authentication</div>
+<div class="mono-font text-sm text-on-surface-variant truncate bg-surface-container px-2 py-1 rounded">/api/v1/auth/login</div>
+<div><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">Auth</span></div>
+<div>
+<!-- Active Toggle -->
+<button aria-checked="true" class="relative inline-flex h-5 w-9 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-[#7C3AED] transition-colors duration-200 ease-in-out focus:outline-none" role="switch">
+<span class="translate-x-4 pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
+</button>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">2 mins ago</div>
+<button class="text-error opacity-0 group-hover:opacity-100 transition-opacity p-1.5 hover:bg-error-container rounded-full"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+<!-- Row 2 (Data) -->
+<div class="grid grid-cols-[2fr_3fr_1fr_1fr_1.5fr_auto] gap-4 px-6 py-4 border-b border-outline-variant items-center hover:bg-primary-fixed/30 transition-colors group">
+<div class="font-body-md text-body-md font-semibold text-on-surface">Fetch User Profile</div>
+<div class="mono-font text-sm text-on-surface-variant truncate bg-surface-container px-2 py-1 rounded">/api/v1/users/{id}</div>
+<div><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Data</span></div>
+<div>
+<!-- Active Toggle -->
+<button aria-checked="true" class="relative inline-flex h-5 w-9 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-[#7C3AED] transition-colors duration-200 ease-in-out focus:outline-none" role="switch">
+<span class="translate-x-4 pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
+</button>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">15 mins ago</div>
+<button class="text-error opacity-0 group-hover:opacity-100 transition-opacity p-1.5 hover:bg-error-container rounded-full"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+<!-- Row 3 (Payment) -->
+<div class="grid grid-cols-[2fr_3fr_1fr_1fr_1.5fr_auto] gap-4 px-6 py-4 border-b border-outline-variant items-center hover:bg-primary-fixed/30 transition-colors group">
+<div class="font-body-md text-body-md font-semibold text-on-surface">Process Subscription</div>
+<div class="mono-font text-sm text-on-surface-variant truncate bg-surface-container px-2 py-1 rounded">/api/v2/payments/charge</div>
+<div><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">Payment</span></div>
+<div>
+<!-- Active Toggle -->
+<button aria-checked="true" class="relative inline-flex h-5 w-9 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-[#7C3AED] transition-colors duration-200 ease-in-out focus:outline-none" role="switch">
+<span class="translate-x-4 pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
+</button>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">1 hour ago</div>
+<button class="text-error opacity-0 group-hover:opacity-100 transition-opacity p-1.5 hover:bg-error-container rounded-full"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+<!-- Row 4 (Media - Inactive) -->
+<div class="grid grid-cols-[2fr_3fr_1fr_1fr_1.5fr_auto] gap-4 px-6 py-4 border-b border-outline-variant items-center hover:bg-primary-fixed/30 transition-colors group opacity-60">
+<div class="font-body-md text-body-md font-semibold text-on-surface">Upload Avatar</div>
+<div class="mono-font text-sm text-on-surface-variant truncate bg-surface-container px-2 py-1 rounded">/api/v1/media/upload</div>
+<div><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800">Media</span></div>
+<div>
+<!-- Inactive Toggle -->
+<button aria-checked="false" class="relative inline-flex h-5 w-9 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-outline-variant transition-colors duration-200 ease-in-out focus:outline-none" role="switch">
+<span class="translate-x-0 pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
+</button>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">2 days ago</div>
+<button class="text-error opacity-0 group-hover:opacity-100 transition-opacity p-1.5 hover:bg-error-container rounded-full"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+<!-- Row 5 (Data) -->
+<div class="grid grid-cols-[2fr_3fr_1fr_1fr_1.5fr_auto] gap-4 px-6 py-4 items-center hover:bg-primary-fixed/30 transition-colors group">
+<div class="font-body-md text-body-md font-semibold text-on-surface">List Devices</div>
+<div class="mono-font text-sm text-on-surface-variant truncate bg-surface-container px-2 py-1 rounded">/api/v1/devices/list</div>
+<div><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Data</span></div>
+<div>
+<!-- Active Toggle -->
+<button aria-checked="true" class="relative inline-flex h-5 w-9 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-[#7C3AED] transition-colors duration-200 ease-in-out focus:outline-none" role="switch">
+<span class="translate-x-4 pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
+</button>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Just now</div>
+<button class="text-error opacity-0 group-hover:opacity-100 transition-opacity p-1.5 hover:bg-error-container rounded-full"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+</div>
+</main>
+</body></html>

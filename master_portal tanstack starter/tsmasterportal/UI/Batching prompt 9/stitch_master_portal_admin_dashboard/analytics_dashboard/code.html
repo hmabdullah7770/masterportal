@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Master Portal - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#5c6274",
+                        "on-surface-variant": "#4a4455",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#fef7ff",
+                        "tertiary-fixed": "#ffdcc6",
+                        "on-primary-fixed": "#25005a",
+                        "on-tertiary-container": "#ffe0cd",
+                        "inverse-primary": "#d2bbff",
+                        "tertiary-container": "#a15100",
+                        "primary-fixed": "#eaddff",
+                        "on-error-container": "#93000a",
+                        "on-background": "#1d1a24",
+                        "on-tertiary-fixed": "#301400",
+                        "surface-container": "#f3ebfa",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "primary": "#630ed4",
+                        "surface-container-low": "#f9f1ff",
+                        "outline": "#7b7487",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-dim": "#dfd7e6",
+                        "on-primary-container": "#ede0ff",
+                        "secondary-container": "#d9dff5",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#141b2b",
+                        "primary-container": "#7c3aed",
+                        "surface-container-highest": "#e8dfee",
+                        "secondary-fixed": "#dce2f7",
+                        "secondary-fixed-dim": "#c0c6db",
+                        "inverse-surface": "#332f39",
+                        "surface-container-high": "#ede5f4",
+                        "on-surface": "#1d1a24",
+                        "inverse-on-surface": "#f6eefc",
+                        "on-tertiary-fixed-variant": "#713700",
+                        "tertiary-fixed-dim": "#ffb784",
+                        "surface-variant": "#e8dfee",
+                        "background": "#fef7ff",
+                        "primary-fixed-dim": "#d2bbff",
+                        "surface-tint": "#732ee4",
+                        "on-primary-fixed-variant": "#5a00c6",
+                        "tertiary": "#7d3d00",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed-variant": "#404758",
+                        "surface": "#fef7ff",
+                        "secondary": "#575e70",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#ccc3d8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "lg": "24px",
+                        "header_height": "64px",
+                        "container_max_width": "1280px",
+                        "sidebar_width": "260px",
+                        "md": "16px",
+                        "xl": "40px",
+                        "xs": "4px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "sans": ["Inter", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "h1": ["30px", {"lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "h3": ["20px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "h2": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "display": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased flex h-screen overflow-hidden">
+<!-- SideNavBar -->
+<aside class="bg-surface dark:bg-surface-container-lowest fixed left-0 top-0 h-screen w-[260px] border-r border-outline-variant dark:border-outline flat no shadows flex flex-col z-50">
+<div class="px-lg py-md border-b border-outline-variant dark:border-outline flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-lg">
+                M
+            </div>
+<div>
+<h1 class="font-h3 text-h3 font-semibold text-primary dark:text-primary-fixed">Master Portal</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Admin Control</p>
+</div>
+</div>
+<nav class="flex flex-col h-full py-lg overflow-y-auto px-sm gap-1 font-body-sm text-body-sm">
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'wght' 300;">home</span>
+                Home
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-primary dark:text-primary-fixed bg-primary-container/10 dark:bg-primary-container/20 rounded-lg opacity-90 scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard" style="font-variation-settings: 'wght' 300; font-variation-settings: 'FILL' 1;">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="edit_note" style="font-variation-settings: 'wght' 300;">edit_note</span>
+                UI Manager
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="settings_applications" style="font-variation-settings: 'wght' 300;">settings_applications</span>
+                Functionality Manager
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="group" style="font-variation-settings: 'wght' 300;">group</span>
+                User Management
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="devices" style="font-variation-settings: 'wght' 300;">devices</span>
+                Device Info
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="auto_renew" style="font-variation-settings: 'wght' 300;">autorenew</span>
+                Subscriptions
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="ads_click" style="font-variation-settings: 'wght' 300;">ads_click</span>
+                Ads Manager
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="api" style="font-variation-settings: 'wght' 300;">api</span>
+                API Control
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="description" style="font-variation-settings: 'wght' 300;">description</span>
+                App Logs
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="terminal" style="font-variation-settings: 'wght' 300;">terminal</span>
+                Server Logs
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="database" style="font-variation-settings: 'wght' 300;">database</span>
+                Database Performance
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="smart_toy" style="font-variation-settings: 'wght' 300;">smart_toy</span>
+                AI Manager
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="key" style="font-variation-settings: 'wght' 300;">key</span>
+                Permissions
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="payments" style="font-variation-settings: 'wght' 300;">payments</span>
+                Revenue
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'wght' 300;">star</span>
+                Ratings &amp; Shares
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance" style="font-variation-settings: 'wght' 300;">account_balance</span>
+                Payment Gateway
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="system_update" style="font-variation-settings: 'wght' 300;">system_update</span>
+                OTA Updates
+            </a>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col ml-[260px] h-screen overflow-hidden">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-container-lowest fixed top-0 right-0 h-[64px] z-40 border-b border-outline-variant dark:border-outline shadow-sm dark:shadow-none flex items-center justify-between px-lg w-[calc(100%-260px)] ml-auto">
+<div class="flex items-center bg-surface-container-low dark:bg-surface-container rounded-lg px-3 py-1.5 w-64 focus-within:ring-2 focus-within:ring-primary/20 transition-all border border-outline-variant">
+<span class="material-symbols-outlined text-on-surface-variant mr-2" data-icon="search" style="font-size: 20px;">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-sm font-body-sm w-full text-on-surface placeholder:text-on-surface-variant/70 p-0" placeholder="Search Master Portal..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container transition-all focus:ring-2 focus:ring-primary/20">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant cursor-pointer hover:ring-2 hover:ring-primary/20 transition-all">
+<img alt="Admin Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-DhwGfaPI59zlXSSxKZ_2Jb58KmHykV1TjKTrnOuwwCqiuCdBPuwV1oMA9LsHHi0mnKs1yVUHan9GhRnsVlUaiSgugGlcwHOdwKYwITbvklGmJ0erHAQ1fLFNOXkO6EzbYdrbTLvDG8IuZqWz3Z1PZiJjYB-HNmcvs0s_M3rpRnc7AcuZUEomyu0KtfUnV3zJGMYT58Mi7L2NhovSoPtZrzlxDWi2jiA1xuIoeMoO-tz8CofM14MZxY7-pDMME_TM1G3l2YYzeKA"/>
+</div>
+</div>
+</header>
+<!-- Dashboard Content Canvas -->
+<main class="flex-1 overflow-y-auto bg-background pt-[88px] pb-xl px-lg">
+<div class="max-w-[1280px] mx-auto space-y-lg">
+<!-- Header & Filters -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<h2 class="font-h2 text-h2 text-on-surface">Overview</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Detailed analytics and performance metrics.</p>
+</div>
+<div class="flex items-center bg-surface-container-lowest p-1 rounded-full border border-outline-variant shadow-sm w-fit">
+<button class="px-4 py-1.5 rounded-full font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low transition-colors">Today</button>
+<button class="px-4 py-1.5 rounded-full bg-primary text-on-primary font-label-md text-label-md shadow-sm">7 Days</button>
+<button class="px-4 py-1.5 rounded-full font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low transition-colors">30 Days</button>
+<button class="px-4 py-1.5 rounded-full font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low transition-colors">Custom</button>
+</div>
+</div>
+<!-- Stat Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-lg border border-outline-variant shadow-[0_4px_12px_rgba(0,0,0,0.03)] flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md text-on-surface-variant">Total Downloads</span>
+<div class="w-8 h-8 rounded-lg bg-primary-container/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]" data-icon="download">download</span>
+</div>
+</div>
+<div class="flex items-baseline gap-3 mt-2">
+<span class="font-display text-display text-on-surface">124.5k</span>
+<span class="font-label-sm text-label-sm text-primary flex items-center bg-primary-container/10 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[14px] mr-1" data-icon="trending_up">trending_up</span>
+                                +12.5%
+                            </span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-lg border border-outline-variant shadow-[0_4px_12px_rgba(0,0,0,0.03)] flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md text-on-surface-variant">New Users Today</span>
+<div class="w-8 h-8 rounded-lg bg-tertiary-container/10 flex items-center justify-center text-tertiary-container">
+<span class="material-symbols-outlined text-[20px]" data-icon="person_add">person_add</span>
+</div>
+</div>
+<div class="flex items-baseline gap-3 mt-2">
+<span class="font-display text-display text-on-surface">3,492</span>
+<span class="font-label-sm text-label-sm text-primary flex items-center bg-primary-container/10 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[14px] mr-1" data-icon="trending_up">trending_up</span>
+                                +4.2%
+                            </span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest rounded-xl p-lg border border-outline-variant shadow-[0_4px_12px_rgba(0,0,0,0.03)] flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md text-on-surface-variant">Uninstalls</span>
+<div class="w-8 h-8 rounded-lg bg-error-container/20 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[20px]" data-icon="delete_sweep">delete_sweep</span>
+</div>
+</div>
+<div class="flex items-baseline gap-3 mt-2">
+<span class="font-display text-display text-on-surface">412</span>
+<span class="font-label-sm text-label-sm text-error flex items-center bg-error-container/20 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[14px] mr-1" data-icon="trending_down">trending_down</span>
+                                -1.1%
+                            </span>
+</div>
+</div>
+</div>
+<!-- Main Chart Area -->
+<div class="bg-surface-container-lowest rounded-xl p-lg border border-outline-variant shadow-[0_4px_12px_rgba(0,0,0,0.03)] relative overflow-hidden min-h-[400px] flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-h3 text-h3 text-on-surface">Daily Downloads Trend</h3>
+<button class="text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined" data-icon="more_horiz">more_horiz</span>
+</button>
+</div>
+<!-- Faux Chart Representation using CSS -->
+<div class="flex-1 relative w-full mt-4 flex items-end">
+<!-- Y-Axis Labels -->
+<div class="absolute left-0 top-0 bottom-8 flex flex-col justify-between text-label-sm font-label-sm text-outline-variant pr-4 border-r border-outline-variant/30 w-[40px] text-right">
+<span>15k</span>
+<span>10k</span>
+<span>5k</span>
+<span>0</span>
+</div>
+<!-- Grid Lines -->
+<div class="absolute left-[40px] right-0 top-0 bottom-8 flex flex-col justify-between z-0">
+<div class="w-full border-b border-outline-variant/20 h-0"></div>
+<div class="w-full border-b border-outline-variant/20 h-0"></div>
+<div class="w-full border-b border-outline-variant/20 h-0"></div>
+<div class="w-full border-b border-outline-variant/50 h-0"></div>
+</div>
+<!-- Chart Area Gradient & Line -->
+<div class="absolute left-[40px] right-0 top-6 bottom-8 z-10 flex items-end">
+<div class="w-full h-full relative" style="clip-path: polygon(0% 100%, 0% 70%, 10% 65%, 20% 80%, 30% 50%, 40% 55%, 50% 30%, 60% 40%, 70% 20%, 80% 35%, 90% 10%, 100% 15%, 100% 100%); background: linear-gradient(180deg, rgba(99, 14, 212, 0.2) 0%, rgba(99, 14, 212, 0) 100%);">
+<svg class="absolute inset-0 w-full h-full" preserveaspectratio="none" viewbox="0 0 100 100">
+<polyline fill="none" points="0,70 10,65 20,80 30,50 40,55 50,30 60,40 70,20 80,35 90,10 100,15" stroke="#630ed4" stroke-width="2" vector-effect="non-scaling-stroke"></polyline>
+</svg>
+</div>
+<!-- Tooltip Example (Hover State Simulation) -->
+<div class="absolute left-[70%] top-[10%] -translate-x-1/2 flex flex-col items-center">
+<div class="bg-inverse-surface text-inverse-on-surface px-3 py-2 rounded-lg text-label-sm font-label-sm shadow-[0_10px_25px_rgba(0,0,0,0.08)] mb-2 whitespace-nowrap z-20">
+<span class="block font-semibold">12,450 Downloads</span>
+<span class="text-inverse-on-surface/70">Oct 24, 2023</span>
+</div>
+<div class="w-2 h-2 bg-inverse-surface rotate-45 -mt-3 mb-1"></div>
+<div class="w-3 h-3 bg-surface-container-lowest border-2 border-primary rounded-full z-20 shadow-sm"></div>
+<div class="w-px h-full bg-primary/30 border-dashed absolute top-12 bottom-0 z-0"></div>
+</div>
+</div>
+<!-- X-Axis Labels -->
+<div class="absolute left-[40px] right-0 bottom-0 h-8 flex justify-between items-end text-label-sm font-label-sm text-outline-variant px-4">
+<span>Oct 18</span>
+<span>Oct 20</span>
+<span>Oct 22</span>
+<span>Oct 24</span>
+<span>Oct 26</span>
+</div>
+</div>
+</div>
+<!-- Data Table Section -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-[0_4px_12px_rgba(0,0,0,0.03)] overflow-hidden flex flex-col">
+<!-- Table Header & Search -->
+<div class="p-lg border-b border-outline-variant flex flex-col sm:flex-row justify-between items-center gap-4 bg-surface-container-lowest">
+<h3 class="font-h3 text-h3 text-on-surface">Recent Activity</h3>
+<div class="flex items-center bg-surface-container-low rounded-lg px-3 py-1.5 w-full sm:w-72 border border-outline-variant focus-within:ring-2 focus-within:ring-primary/20 transition-all">
+<span class="material-symbols-outlined text-on-surface-variant mr-2 text-[18px]" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-sm font-body-sm w-full text-on-surface placeholder:text-on-surface-variant/70 p-0" placeholder="Search records..." type="text"/>
+</div>
+</div>
+<!-- Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-outline-variant text-label-sm font-label-sm text-on-surface-variant bg-surface-container-lowest">
+<th class="py-4 px-6 font-medium">Date</th>
+<th class="py-4 px-6 font-medium">Downloads</th>
+<th class="py-4 px-6 font-medium">New Users</th>
+<th class="py-4 px-6 font-medium">Uninstalls</th>
+<th class="py-4 px-6 font-medium">Region</th>
+</tr>
+</thead>
+<tbody class="text-body-sm font-body-sm text-on-surface">
+<tr class="border-b border-outline-variant/50 hover:bg-surface-container-low/50 transition-colors">
+<td class="py-4 px-6">Oct 26, 2023</td>
+<td class="py-4 px-6 font-medium text-primary">1,245</td>
+<td class="py-4 px-6">842</td>
+<td class="py-4 px-6 text-on-surface-variant">42</td>
+<td class="py-4 px-6">
+<span class="bg-surface-container-high px-2.5 py-1 rounded-full text-label-sm text-on-surface">North America</span>
+</td>
+</tr>
+<tr class="border-b border-outline-variant/50 bg-[#F9FAFB] hover:bg-surface-container-low/50 transition-colors">
+<td class="py-4 px-6">Oct 25, 2023</td>
+<td class="py-4 px-6 font-medium text-primary">2,104</td>
+<td class="py-4 px-6">1,102</td>
+<td class="py-4 px-6 text-on-surface-variant">89</td>
+<td class="py-4 px-6">
+<span class="bg-surface-container-high px-2.5 py-1 rounded-full text-label-sm text-on-surface">Europe</span>
+</td>
+</tr>
+<tr class="border-b border-outline-variant/50 hover:bg-surface-container-low/50 transition-colors">
+<td class="py-4 px-6">Oct 24, 2023</td>
+<td class="py-4 px-6 font-medium text-primary">12,450</td>
+<td class="py-4 px-6">3,492</td>
+<td class="py-4 px-6 text-on-surface-variant">412</td>
+<td class="py-4 px-6">
+<span class="bg-surface-container-high px-2.5 py-1 rounded-full text-label-sm text-on-surface">Asia Pacific</span>
+</td>
+</tr>
+<tr class="border-b border-outline-variant/50 bg-[#F9FAFB] hover:bg-surface-container-low/50 transition-colors">
+<td class="py-4 px-6">Oct 23, 2023</td>
+<td class="py-4 px-6 font-medium text-primary">9,820</td>
+<td class="py-4 px-6">2,810</td>
+<td class="py-4 px-6 text-on-surface-variant">301</td>
+<td class="py-4 px-6">
+<span class="bg-surface-container-high px-2.5 py-1 rounded-full text-label-sm text-on-surface">North America</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-4 px-6">Oct 22, 2023</td>
+<td class="py-4 px-6 font-medium text-primary">8,450</td>
+<td class="py-4 px-6">2,100</td>
+<td class="py-4 px-6 text-on-surface-variant">250</td>
+<td class="py-4 px-6">
+<span class="bg-surface-container-high px-2.5 py-1 rounded-full text-label-sm text-on-surface">South America</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="p-4 border-t border-outline-variant bg-surface-container-lowest flex items-center justify-between">
+<span class="text-label-sm font-label-sm text-on-surface-variant">Showing 1 to 5 of 24 entries</span>
+<div class="flex items-center gap-1">
+<button class="w-8 h-8 rounded border border-outline-variant flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded border border-primary bg-primary text-on-primary font-label-sm flex items-center justify-center">1</button>
+<button class="w-8 h-8 rounded border border-outline-variant text-on-surface hover:bg-surface-container-low font-label-sm flex items-center justify-center transition-colors">2</button>
+<button class="w-8 h-8 rounded border border-outline-variant text-on-surface hover:bg-surface-container-low font-label-sm flex items-center justify-center transition-colors">3</button>
+<span class="text-on-surface-variant px-1">...</span>
+<button class="w-8 h-8 rounded border border-outline-variant flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

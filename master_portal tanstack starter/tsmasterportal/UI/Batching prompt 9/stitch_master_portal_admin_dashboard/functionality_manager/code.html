@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Functionality Manager - Master Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#5c6274",
+                        "surface-container-low": "#f9f1ff",
+                        "on-surface": "#1d1a24",
+                        "primary-fixed-dim": "#d2bbff",
+                        "on-secondary-fixed": "#141b2b",
+                        "surface-container-high": "#ede5f4",
+                        "secondary-fixed": "#dce2f7",
+                        "tertiary": "#7d3d00",
+                        "on-secondary-fixed-variant": "#404758",
+                        "on-primary-container": "#ede0ff",
+                        "inverse-primary": "#d2bbff",
+                        "on-tertiary-container": "#ffe0cd",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed-dim": "#c0c6db",
+                        "surface-dim": "#dfd7e6",
+                        "surface-container-highest": "#e8dfee",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#ffb784",
+                        "on-background": "#1d1a24",
+                        "outline": "#7b7487",
+                        "on-primary": "#ffffff",
+                        "primary": "#630ed4",
+                        "primary-fixed": "#eaddff",
+                        "on-primary-fixed-variant": "#5a00c6",
+                        "tertiary-fixed": "#ffdcc6",
+                        "on-tertiary-fixed-variant": "#713700",
+                        "on-primary-fixed": "#25005a",
+                        "outline-variant": "#ccc3d8",
+                        "inverse-on-surface": "#f6eefc",
+                        "surface": "#fef7ff",
+                        "background": "#fef7ff",
+                        "tertiary-container": "#a15100",
+                        "on-tertiary-fixed": "#301400",
+                        "secondary": "#575e70",
+                        "inverse-surface": "#332f39",
+                        "surface-bright": "#fef7ff",
+                        "surface-container": "#f3ebfa",
+                        "primary-container": "#7c3aed",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#d9dff5",
+                        "surface-variant": "#e8dfee",
+                        "on-secondary": "#ffffff",
+                        "surface-tint": "#732ee4",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "on-surface-variant": "#4a4455"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "unit": "4px",
+                        "sidebar_width": "260px",
+                        "xl": "40px",
+                        "sm": "8px",
+                        "header_height": "64px",
+                        "lg": "24px",
+                        "container_max_width": "1280px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "sans": ['Inter', 'sans-serif']
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "h1": ["30px", { "lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "display": ["36px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "1.2", "fontWeight": "500" }],
+                        "h2": ["24px", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "h3": ["20px", { "lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #F8F9FA; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="text-on-surface bg-[#F8F9FA] min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 h-[64px] z-40 bg-surface-container-lowest border-b border-outline-variant shadow-sm flex items-center justify-between px-lg w-full md:w-[calc(100%-260px)] md:ml-auto">
+<div class="flex items-center gap-4">
+<!-- Mobile menu button, hidden on desktop -->
+<button class="md:hidden p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all focus:ring-2 focus:ring-primary/20">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-h2 text-h2 font-bold text-on-surface hidden md:block tracking-tight">Master Portal</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container rounded-full text-body-sm font-body-sm border-none focus:ring-2 focus:ring-primary/20 w-64 transition-all" placeholder="Search..." type="text"/>
+</div>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all focus:ring-2 focus:ring-primary/20 relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<button class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant hover:ring-2 hover:ring-primary/20 transition-all focus:ring-2 focus:ring-primary/20">
+<img alt="Admin Avatar" class="w-full h-full object-cover" data-alt="A professional headshot of a mature administrative user with a subtle smile. The portrait is brightly lit, adhering to a clean, modern corporate aesthetic. The background is a soft, out-of-focus light gray, complementing the light-mode UI color palette. The lighting highlights clear details, conveying reliability and accessibility in a minimalist SaaS environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvJjAMQKeN3eU0utIYRbldqwx_PYL2DOxnSVpabjht3paD9_n-djZOGDQcnUk3AQY3ncjRHlNthekGX4-JsvVnZ-EuB70EwUJy8MOPc2P0a6jnqmV4nqLxBh7dY8KSZM3cY5gpxrygioeR4b5AflbnM_HCPIMfeDfutGERGdsQbDzqqRldlMqzpX0aKg8xpshohghCtOCTWZeFw_As4MnW0MoxOLfSTK2a4dSrlX0QJZ9KNu3N-N2UBb07inrE6U4T5KQbLLHPq3I"/>
+</button>
+</div>
+</header>
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 h-screen w-[260px] bg-surface-container-lowest border-r border-outline-variant hidden md:flex flex-col py-lg z-50">
+<div class="px-6 pb-6 border-b border-outline-variant/50 mb-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">admin_panel_settings</span>
+</div>
+<div>
+<h2 class="font-h3 text-h3 font-semibold text-primary">Master Portal</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Admin Control</p>
+</div>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto px-4 space-y-1 custom-scrollbar">
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg group focus:outline-none focus:ring-2 focus:ring-primary/20" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">home</span>
+<span class="font-body-sm text-body-sm font-medium">Home</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg group focus:outline-none focus:ring-2 focus:ring-primary/20" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">dashboard</span>
+<span class="font-body-sm text-body-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg group focus:outline-none focus:ring-2 focus:ring-primary/20" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">edit_note</span>
+<span class="font-body-sm text-body-sm font-medium">UI Manager</span>
+</a>
+<!-- Active Item -->
+<a class="flex items-center gap-3 px-4 py-2 text-primary bg-primary-container/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 relative" href="#">
+<div class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-primary rounded-r-full"></div>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">settings_applications</span>
+<span class="font-body-sm text-body-sm font-medium">Functionality Manager</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg group focus:outline-none focus:ring-2 focus:ring-primary/20" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">group</span>
+<span class="font-body-sm text-body-sm font-medium">User Management</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg group focus:outline-none focus:ring-2 focus:ring-primary/20" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">devices</span>
+<span class="font-body-sm text-body-sm font-medium">Device Info</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg group focus:outline-none focus:ring-2 focus:ring-primary/20" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">autorenew</span>
+<span class="font-body-sm text-body-sm font-medium">Subscriptions</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg group focus:outline-none focus:ring-2 focus:ring-primary/20" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">ads_click</span>
+<span class="font-body-sm text-body-sm font-medium">Ads Manager</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg group focus:outline-none focus:ring-2 focus:ring-primary/20" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">api</span>
+<span class="font-body-sm text-body-sm font-medium">API Control</span>
+</a>
+<div class="py-4">
+<div class="px-4 py-2 font-label-sm text-label-sm text-on-surface-variant/70 uppercase tracking-wider">System</div>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg group focus:outline-none focus:ring-2 focus:ring-primary/20" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">description</span>
+<span class="font-body-sm text-body-sm font-medium">App Logs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg group focus:outline-none focus:ring-2 focus:ring-primary/20" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">terminal</span>
+<span class="font-body-sm text-body-sm font-medium">Server Logs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg group focus:outline-none focus:ring-2 focus:ring-primary/20" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">database</span>
+<span class="font-body-sm text-body-sm font-medium">Database Performance</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg group focus:outline-none focus:ring-2 focus:ring-primary/20" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">smart_toy</span>
+<span class="font-body-sm text-body-sm font-medium">AI Manager</span>
+</a>
+</div>
+<div class="py-4">
+<div class="px-4 py-2 font-label-sm text-label-sm text-on-surface-variant/70 uppercase tracking-wider">Business</div>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg group focus:outline-none focus:ring-2 focus:ring-primary/20" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">key</span>
+<span class="font-body-sm text-body-sm font-medium">Permissions</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg group focus:outline-none focus:ring-2 focus:ring-primary/20" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">payments</span>
+<span class="font-body-sm text-body-sm font-medium">Revenue</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg group focus:outline-none focus:ring-2 focus:ring-primary/20" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">star</span>
+<span class="font-body-sm text-body-sm font-medium">Ratings &amp; Shares</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg group focus:outline-none focus:ring-2 focus:ring-primary/20" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">account_balance</span>
+<span class="font-body-sm text-body-sm font-medium">Payment Gateway</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg group focus:outline-none focus:ring-2 focus:ring-primary/20" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">system_update</span>
+<span class="font-body-sm text-body-sm font-medium">OTA Updates</span>
+</a>
+</div>
+</div>
+<!-- Sidebar Footer -->
+<div class="p-4 mt-auto border-t border-outline-variant/50">
+<div class="flex items-center gap-3 px-2 py-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">person</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-label-sm text-label-sm font-medium text-on-surface truncate">Admin User</p>
+<p class="font-label-sm text-[11px] text-on-surface-variant truncate">admin@masterportal.com</p>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors focus:outline-none">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="pt-[64px] md:ml-[260px] min-h-screen">
+<div class="max-w-[1280px] mx-auto p-4 md:p-8 space-y-8">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h2 class="font-display text-display text-on-surface tracking-tight mb-1">Functionality Manager</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Toggle global features and capabilities across the platform ecosystem.</p>
+</div>
+<div class="flex gap-3">
+<button class="px-4 py-2 rounded-full border border-outline-variant bg-surface-container-lowest text-on-surface font-label-md text-label-md hover:bg-surface-container-low transition-colors shadow-sm focus:ring-2 focus:ring-primary/20 focus:outline-none">
+                        Discard Changes
+                    </button>
+<button class="px-6 py-2 rounded-full bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-fixed-dim transition-colors shadow-sm focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:outline-none focus:ring-offset-[#F8F9FA]">
+                        Save Configuration
+                    </button>
+</div>
+</div>
+<!-- Settings Card: Post Features -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant/60 shadow-[0px_4px_12px_rgba(0,0,0,0.03)] overflow-hidden">
+<div class="px-6 py-5 border-b border-outline-variant/40 bg-surface-container-lowest/50">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary text-[20px]">dynamic_feed</span>
+<h3 class="font-h3 text-h3 text-on-surface">Post Features</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant ml-7">Manage content creation capabilities and editing permissions for user posts.</p>
+</div>
+<div class="divide-y divide-outline-variant/30">
+<!-- Row 1 -->
+<div class="flex items-center justify-between px-6 py-4 hover:bg-surface-container-lowest/50 transition-colors">
+<div class="pr-6">
+<label class="font-label-md text-[15px] font-semibold text-on-surface block mb-1 cursor-pointer" for="toggle-multi-store">Multi-Store Posts</label>
+<p class="font-body-sm text-[13px] text-on-surface-variant">Allow users to syndicate a single post across multiple connected storefronts simultaneously.</p>
+</div>
+<div class="flex-shrink-0">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" id="toggle-multi-store" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant/50 rounded-full peer peer-focus:ring-4 peer-focus:ring-primary/20 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="flex items-center justify-between px-6 py-4 hover:bg-surface-container-lowest/50 transition-colors">
+<div class="pr-6">
+<label class="font-label-md text-[15px] font-semibold text-on-surface block mb-1 cursor-pointer" for="toggle-store-links">Store Reference Links</label>
+<p class="font-body-sm text-[13px] text-on-surface-variant">Enable automatic generation of back-links to the originating store within post metadata.</p>
+</div>
+<div class="flex-shrink-0">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" id="toggle-store-links" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant/50 rounded-full peer peer-focus:ring-4 peer-focus:ring-primary/20 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="flex items-center justify-between px-6 py-4 hover:bg-surface-container-lowest/50 transition-colors">
+<div class="pr-6">
+<label class="font-label-md text-[15px] font-semibold text-on-surface block mb-1 cursor-pointer" for="toggle-edit-post">Edit Post Button</label>
+<p class="font-body-sm text-[13px] text-on-surface-variant">Display the inline edit action for text-based content after publishing.</p>
+</div>
+<div class="flex-shrink-0">
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" id="toggle-edit-post" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant/50 rounded-full peer peer-focus:ring-4 peer-focus:ring-primary/20 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+<!-- Row 4 -->
+<div class="flex items-center justify-between px-6 py-4 hover:bg-surface-container-lowest/50 transition-colors">
+<div class="pr-6">
+<label class="font-label-md text-[15px] font-semibold text-on-surface block mb-1 cursor-pointer" for="toggle-edit-carousel">Edit Carousel Button</label>
+<p class="font-body-sm text-[13px] text-on-surface-variant">Permit reordering, adding, or removing images from a published media carousel.</p>
+</div>
+<div class="flex-shrink-0">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" id="toggle-edit-carousel" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant/50 rounded-full peer peer-focus:ring-4 peer-focus:ring-primary/20 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+<!-- Row 5 -->
+<div class="flex items-center justify-between px-6 py-4 hover:bg-surface-container-lowest/50 transition-colors">
+<div class="pr-6">
+<label class="font-label-md text-[15px] font-semibold text-on-surface block mb-1 cursor-pointer" for="toggle-edit-product">Edit Product Button</label>
+<p class="font-body-sm text-[13px] text-on-surface-variant">Allow quick-editing of linked product details directly from the post view.</p>
+</div>
+<div class="flex-shrink-0">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" id="toggle-edit-product" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant/50 rounded-full peer peer-focus:ring-4 peer-focus:ring-primary/20 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+</div>
+</section>
+<!-- Settings Card: Store Features -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant/60 shadow-[0px_4px_12px_rgba(0,0,0,0.03)] overflow-hidden">
+<div class="px-6 py-5 border-b border-outline-variant/40 bg-surface-container-lowest/50">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary text-[20px]">storefront</span>
+<h3 class="font-h3 text-h3 text-on-surface">Store Features</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant ml-7">Configure advanced commerce tools and multi-vendor capabilities.</p>
+</div>
+<div class="divide-y divide-outline-variant/30">
+<!-- Row 1 -->
+<div class="flex items-center justify-between px-6 py-4 hover:bg-surface-container-lowest/50 transition-colors">
+<div class="pr-6">
+<label class="font-label-md text-[15px] font-semibold text-on-surface block mb-1 cursor-pointer" for="toggle-collab-selling">Collaborative Store Selling</label>
+<p class="font-body-sm text-[13px] text-on-surface-variant">Enable joint storefronts where multiple approved vendors can list inventory in a shared space.</p>
+</div>
+<div class="flex-shrink-0">
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" id="toggle-collab-selling" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant/50 rounded-full peer peer-focus:ring-4 peer-focus:ring-primary/20 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="flex items-center justify-between px-6 py-4 hover:bg-surface-container-lowest/50 transition-colors">
+<div class="pr-6">
+<label class="font-label-md text-[15px] font-semibold text-on-surface block mb-1 cursor-pointer" for="toggle-bidding">Bidding System</label>
+<p class="font-body-sm text-[13px] text-on-surface-variant">Activate auction-style pricing options for selected premium inventory items.</p>
+</div>
+<div class="flex-shrink-0">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" id="toggle-bidding" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant/50 rounded-full peer peer-focus:ring-4 peer-focus:ring-primary/20 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+</body></html>

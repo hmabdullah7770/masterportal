@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Master Portal - Subscription Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-background": "#1d1a24",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-container": "#ede0ff",
+                      "outline": "#7b7487",
+                      "on-secondary-container": "#5c6274",
+                      "on-primary-fixed": "#25005a",
+                      "on-tertiary-fixed": "#301400",
+                      "on-primary-fixed-variant": "#5a00c6",
+                      "on-error": "#ffffff",
+                      "surface-container": "#f3ebfa",
+                      "background": "#fef7ff",
+                      "surface-container-highest": "#e8dfee",
+                      "inverse-on-surface": "#f6eefc",
+                      "tertiary-container": "#a15100",
+                      "surface-container-low": "#f9f1ff",
+                      "secondary-container": "#d9dff5",
+                      "on-secondary-fixed-variant": "#404758",
+                      "on-secondary-fixed": "#141b2b",
+                      "on-primary": "#ffffff",
+                      "secondary-fixed": "#dce2f7",
+                      "secondary-fixed-dim": "#c0c6db",
+                      "primary-container": "#7c3aed",
+                      "surface-variant": "#e8dfee",
+                      "error-container": "#ffdad6",
+                      "surface-dim": "#dfd7e6",
+                      "on-surface-variant": "#4a4455",
+                      "surface-container-high": "#ede5f4",
+                      "primary-fixed": "#eaddff",
+                      "inverse-primary": "#d2bbff",
+                      "primary-fixed-dim": "#d2bbff",
+                      "on-tertiary-container": "#ffe0cd",
+                      "tertiary-fixed": "#ffdcc6",
+                      "primary": "#630ed4",
+                      "outline-variant": "#ccc3d8",
+                      "surface-tint": "#732ee4",
+                      "surface-bright": "#fef7ff",
+                      "error": "#ba1a1a",
+                      "tertiary-fixed-dim": "#ffb784",
+                      "surface": "#fef7ff",
+                      "inverse-surface": "#332f39",
+                      "tertiary": "#7d3d00",
+                      "on-error-container": "#93000a",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "secondary": "#575e70",
+                      "on-tertiary-fixed-variant": "#713700",
+                      "on-surface": "#1d1a24"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "sidebar_width": "260px",
+                      "xs": "4px",
+                      "md": "16px",
+                      "xl": "40px",
+                      "header_height": "64px",
+                      "sm": "8px",
+                      "lg": "24px",
+                      "container_max_width": "1280px",
+                      "unit": "4px"
+              },
+              "fontFamily": {},
+              "fontSize": {
+                      "h1": [
+                              "30px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "h2": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "h3": [
+                              "20px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display": [
+                              "36px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+</head>
+<body class="bg-[#F8F9FA] text-on-surface font-body-md h-screen overflow-hidden flex">
+<!-- SideNavBar -->
+<aside class="bg-surface dark:bg-surface-container-lowest fixed left-0 top-0 h-screen w-[260px] border-r border-outline-variant dark:border-outline flat no shadows flex flex-col h-full py-lg overflow-y-auto z-50">
+<div class="px-6 mb-8 flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-primary-container flex items-center justify-center text-on-primary font-bold">M</div>
+<div>
+<h1 class="font-h3 text-h3 font-semibold text-primary dark:text-primary-fixed">Master Portal</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Admin Control</p>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">home</span>
+                Home
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">edit_note</span>
+                UI Manager
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings_applications</span>
+                Functionality Manager
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">group</span>
+                User Management
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">devices</span>
+                Device Info
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-primary dark:text-primary-fixed bg-primary-container/10 dark:bg-primary-container/20 rounded-lg font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">autorenew</span>
+                Subscriptions
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">ads_click</span>
+                Ads Manager
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">api</span>
+                API Control
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">description</span>
+                App Logs
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">terminal</span>
+                Server Logs
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">database</span>
+                Database Performance
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">smart_toy</span>
+                AI Manager
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">key</span>
+                Permissions
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">payments</span>
+                Revenue
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">star</span>
+                Ratings &amp; Shares
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">account_balance</span>
+                Payment Gateway
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 rounded-lg font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">system_update</span>
+                OTA Updates
+            </a>
+</nav>
+</aside>
+<!-- Main Content Wrapper -->
+<div class="flex-1 flex flex-col ml-[260px] h-screen">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-container-lowest fixed top-0 right-0 h-[64px] z-40 border-b border-outline-variant dark:border-outline shadow-sm dark:shadow-none flex items-center justify-between px-lg w-[calc(100%-260px)]">
+<div class="flex items-center bg-surface-container-low rounded-full px-4 py-2 w-96 border border-outline-variant focus-within:border-primary-container focus-within:ring-2 focus-within:ring-primary/20 transition-all">
+<span class="material-symbols-outlined text-on-surface-variant mr-2" style="font-variation-settings: 'FILL' 0;">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-sm w-full outline-none text-on-surface placeholder-on-surface-variant" placeholder="Search subscriptions, users, or emails..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-surface-container-low dark:hover:bg-surface-container transition-all text-on-surface-variant">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant cursor-pointer">
+<img alt="Admin Avatar" class="w-full h-full object-cover" data-alt="A professional headshot of a female admin user in her 30s. Soft, even studio lighting. She is wearing a modern corporate dark blazer over a white shirt. The background is a clean, minimal light grey, fitting a modern light-mode SaaS aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2MdXjAFytdDGa_Ls03uJkA3-IxPryrfQfA2pexeDBUp2k3kbCexpH7foBYZLmbW4qQfOY9EqRmJ5z5-va1VI3344B9QQdMW4Gfe-kHEFM3iRCPjlcv3gTpGvDGU-Qx6QVMTQVsHZtctWH7AybRBdwzEp1U9S1ZBoX6ggzS48gyR6VBkKXcYSkkoYB16fgqRjPgfSCYcRW8ctL62zl8t_3bzLizZe9I0mnAVrfLkeDfBhsqnyKuESf8M7WF6RjvSQN6tAepzQOBcQ"/>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<main class="flex-1 overflow-y-auto mt-[64px] p-6 lg:p-8 max-w-[1280px] mx-auto w-full">
+<div class="mb-6">
+<h2 class="font-h2 text-h2 font-semibold text-on-surface mb-2">Subscription Management</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Monitor and manage user plans, trials, and active subscriptions across the platform.</p>
+</div>
+<!-- Filter Tabs -->
+<div class="flex overflow-x-auto pb-4 mb-6 gap-3 no-scrollbar">
+<button class="flex items-center gap-2 bg-primary-container text-on-primary px-4 py-2 rounded-full font-label-md transition-all whitespace-nowrap">
+                    All
+                    <span class="bg-white/20 text-on-primary px-2 py-0.5 rounded-full text-[10px] font-bold">12,450</span>
+</button>
+<button class="flex items-center gap-2 bg-surface text-on-surface-variant border border-outline-variant px-4 py-2 rounded-full font-label-md hover:bg-surface-container-low transition-all whitespace-nowrap">
+                    Free
+                    <span class="bg-surface-variant text-on-surface-variant px-2 py-0.5 rounded-full text-[10px] font-bold">5,200</span>
+</button>
+<button class="flex items-center gap-2 bg-surface text-on-surface-variant border border-outline-variant px-4 py-2 rounded-full font-label-md hover:bg-surface-container-low transition-all whitespace-nowrap">
+                    Free Trial
+                    <span class="bg-surface-variant text-on-surface-variant px-2 py-0.5 rounded-full text-[10px] font-bold">850</span>
+</button>
+<button class="flex items-center gap-2 bg-surface text-on-surface-variant border border-outline-variant px-4 py-2 rounded-full font-label-md hover:bg-surface-container-low transition-all whitespace-nowrap">
+                    Standard
+                    <span class="bg-surface-variant text-on-surface-variant px-2 py-0.5 rounded-full text-[10px] font-bold">2,100</span>
+</button>
+<button class="flex items-center gap-2 bg-surface text-on-surface-variant border border-outline-variant px-4 py-2 rounded-full font-label-md hover:bg-surface-container-low transition-all whitespace-nowrap">
+                    Store Standard
+                    <span class="bg-surface-variant text-on-surface-variant px-2 py-0.5 rounded-full text-[10px] font-bold">1,400</span>
+</button>
+<button class="flex items-center gap-2 bg-surface text-on-surface-variant border border-outline-variant px-4 py-2 rounded-full font-label-md hover:bg-surface-container-low transition-all whitespace-nowrap">
+                    Store Premium
+                    <span class="bg-surface-variant text-on-surface-variant px-2 py-0.5 rounded-full text-[10px] font-bold">950</span>
+</button>
+<button class="flex items-center gap-2 bg-surface text-on-surface-variant border border-outline-variant px-4 py-2 rounded-full font-label-md hover:bg-surface-container-low transition-all whitespace-nowrap">
+                    Premium
+                    <span class="bg-surface-variant text-on-surface-variant px-2 py-0.5 rounded-full text-[10px] font-bold">1,600</span>
+</button>
+<button class="flex items-center gap-2 bg-surface text-on-surface-variant border border-outline-variant px-4 py-2 rounded-full font-label-md hover:bg-surface-container-low transition-all whitespace-nowrap">
+                    Premium+
+                    <span class="bg-surface-variant text-on-surface-variant px-2 py-0.5 rounded-full text-[10px] font-bold">350</span>
+</button>
+</div>
+<!-- Stat Cards Row -->
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 mb-8">
+<!-- Free -->
+<div class="bg-surface rounded-xl p-4 border border-outline-variant shadow-[0px_4px_12px_rgba(0,0,0,0.03)] flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-on-surface-variant mb-2" style="font-variation-settings: 'FILL' 0;">account_circle</span>
+<span class="font-h3 text-h3 text-on-surface font-semibold">5,200</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1">Free Users</span>
+</div>
+<!-- Free Trial -->
+<div class="bg-surface rounded-xl p-4 border border-outline-variant shadow-[0px_4px_12px_rgba(0,0,0,0.03)] flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-[#3B82F6] mb-2" style="font-variation-settings: 'FILL' 0;">timer</span>
+<span class="font-h3 text-h3 text-on-surface font-semibold">850</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1">On Trial</span>
+</div>
+<!-- Standard -->
+<div class="bg-surface rounded-xl p-4 border border-outline-variant shadow-[0px_4px_12px_rgba(0,0,0,0.03)] flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-[#10B981] mb-2" style="font-variation-settings: 'FILL' 0;">verified</span>
+<span class="font-h3 text-h3 text-on-surface font-semibold">2,100</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1">Standard</span>
+</div>
+<!-- Store Standard -->
+<div class="bg-surface rounded-xl p-4 border border-outline-variant shadow-[0px_4px_12px_rgba(0,0,0,0.03)] flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-[#F59E0B] mb-2" style="font-variation-settings: 'FILL' 0;">storefront</span>
+<span class="font-h3 text-h3 text-on-surface font-semibold">1,400</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1">Store Std</span>
+</div>
+<!-- Store Premium -->
+<div class="bg-surface rounded-xl p-4 border border-outline-variant shadow-[0px_4px_12px_rgba(0,0,0,0.03)] flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-[#EC4899] mb-2" style="font-variation-settings: 'FILL' 0;">local_mall</span>
+<span class="font-h3 text-h3 text-on-surface font-semibold">950</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1">Store Prem</span>
+</div>
+<!-- Premium -->
+<div class="bg-surface rounded-xl p-4 border border-outline-variant shadow-[0px_4px_12px_rgba(0,0,0,0.03)] flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-primary-container mb-2" style="font-variation-settings: 'FILL' 0;">workspace_premium</span>
+<span class="font-h3 text-h3 text-on-surface font-semibold">1,600</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1">Premium</span>
+</div>
+<!-- Premium+ -->
+<div class="bg-surface rounded-xl p-4 border border-outline-variant shadow-[0px_4px_12px_rgba(0,0,0,0.03)] flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-[#8B5CF6] mb-2" style="font-variation-settings: 'FILL' 1;">diamond</span>
+<span class="font-h3 text-h3 text-on-surface font-semibold">350</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1">Premium+</span>
+</div>
+</div>
+<!-- Main Data Table Card -->
+<div class="bg-surface rounded-xl border border-outline-variant shadow-[0px_4px_12px_rgba(0,0,0,0.03)] overflow-hidden">
+<!-- Table Header Actions -->
+<div class="p-4 border-b border-outline-variant flex justify-between items-center bg-surface">
+<div class="flex items-center gap-4">
+<h3 class="font-h3 text-h3 text-on-surface font-semibold">Subscribers List</h3>
+<span class="bg-surface-variant text-on-surface-variant px-2 py-1 rounded text-label-sm font-label-sm">Showing 1-10 of 12,450</span>
+</div>
+<div class="flex gap-2">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded border border-outline-variant transition-colors">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">filter_list</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded border border-outline-variant transition-colors">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">download</span>
+</button>
+</div>
+</div>
+<!-- Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-[#F9FAFB] border-b border-outline-variant">
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant font-medium">User</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant font-medium">Current Plan</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant font-medium">Start Date</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant font-medium">Expiry Date</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant font-medium">Status</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant font-medium text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="py-3 px-4">
+<div class="flex items-center gap-3">
+<img alt="Avatar" class="w-8 h-8 rounded-full object-cover border border-outline-variant" data-alt="A small circular avatar of a young man with short brown hair, smiling subtly. Light grey background. Professional SaaS aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC251CdVDijpG2ttCFHmSSzWp636VUC5cRnGl2UUk6Wq7QKdPJiGYzpYuYDKIBzdy8zJpoUaxolMV9_Se6S1BnhhQmpspUeU7iNRPNtbhIrWLE3yohrUIG_YIdeE8p_seq5Y7AxbDsU7JBhK-GDFO5Au2FNVOqlLx-8Z33tJS-XoVrsNOiBHvpeTTA70n2XrHQcZJ2Zp56KPRWhRpSgtiK_dBZA5h_tzUEQjM4s3XjtWgC_mjDXYYmKUsdavG-HNmy_x1Rn0TGLKvE"/>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-medium">Alex Johnson</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant text-[12px]">alex.j@example.com</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary-container/10 text-primary-container">
+                                        Premium
+                                    </span>
+</td>
+<td class="py-3 px-4 font-body-sm text-body-sm text-on-surface">Oct 12, 2023</td>
+<td class="py-3 px-4 font-body-sm text-body-sm text-on-surface">Oct 12, 2024</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#10B981]/10 text-[#059669]">
+                                        Active
+                                    </span>
+</td>
+<td class="py-3 px-4 text-right">
+<button class="inline-flex items-center justify-center px-3 py-1.5 border border-primary-container text-primary-container rounded-full hover:bg-primary-container/5 transition-colors font-label-md text-[13px]">
+                                        Downgrade
+                                    </button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="py-3 px-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-[#3B82F6]/10 text-[#3B82F6] flex items-center justify-center font-bold text-sm border border-[#3B82F6]/20">S</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-medium">Sarah Miller</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant text-[12px]">smiller@acme.co</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#3B82F6]/10 text-[#2563EB]">
+                                        Free Trial
+                                    </span>
+</td>
+<td class="py-3 px-4 font-body-sm text-body-sm text-on-surface">Nov 01, 2023</td>
+<td class="py-3 px-4 font-body-sm text-body-sm text-on-surface">Nov 14, 2023</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#10B981]/10 text-[#059669]">
+                                        Active
+                                    </span>
+</td>
+<td class="py-3 px-4 text-right">
+<button class="inline-flex items-center justify-center px-3 py-1.5 border border-primary-container text-primary-container rounded-full hover:bg-primary-container/5 transition-colors font-label-md text-[13px]">
+                                        Upgrade
+                                    </button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="py-3 px-4">
+<div class="flex items-center gap-3">
+<img alt="Avatar" class="w-8 h-8 rounded-full object-cover border border-outline-variant" data-alt="A small circular avatar of an older woman with glasses. Clean white background. Professional corporate SaaS style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdy-Ft0NVg4wNLJoyonv6xBvffxXMg4KVqiZrSPRBFHTe91g-o1_VTa6LZSVaWcCKFPc4B5XRP0ByoyB15hUn7XjREPGHZD-6fWSh7Rifb0hEfo3oC8B-gXgbCp8V34mw_Ap6yyk7CV-3qMt41SFawvOhxL8W8GUlOe_SpyJY10DvdjivZWJPLBKhn7rq3E4mFkfhBBwFT2E0C1vF54s4oFW8Va0-FvepbnBnEyZ7Gr4fuyLS9aRSnROta1NP_bLvhcoLllBKCLbk"/>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-medium">Elena Rostova</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant text-[12px]">elena.r@design.io</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#10B981]/10 text-[#059669]">
+                                        Standard
+                                    </span>
+</td>
+<td class="py-3 px-4 font-body-sm text-body-sm text-on-surface">Jan 15, 2022</td>
+<td class="py-3 px-4 font-body-sm text-body-sm text-error">Oct 01, 2023</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-error/10 text-error">
+                                        Expired
+                                    </span>
+</td>
+<td class="py-3 px-4 text-right">
+<button class="inline-flex items-center justify-center px-3 py-1.5 border border-primary-container text-primary-container rounded-full hover:bg-primary-container/5 transition-colors font-label-md text-[13px]">
+                                        Upgrade
+                                    </button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="py-3 px-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-bold text-sm border border-outline-variant">M</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-medium">Michael Chang</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant text-[12px]">m.chang@startup.com</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#8B5CF6]/10 text-[#6D28D9]">
+                                        Premium+
+                                    </span>
+</td>
+<td class="py-3 px-4 font-body-sm text-body-sm text-on-surface">Aug 20, 2023</td>
+<td class="py-3 px-4 font-body-sm text-body-sm text-on-surface">Aug 20, 2024</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#10B981]/10 text-[#059669]">
+                                        Active
+                                    </span>
+</td>
+<td class="py-3 px-4 text-right">
+<button class="inline-flex items-center justify-center px-3 py-1.5 border border-primary-container text-primary-container rounded-full hover:bg-primary-container/5 transition-colors font-label-md text-[13px]">
+                                        Downgrade
+                                    </button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-low transition-colors group border-transparent">
+<td class="py-3 px-4">
+<div class="flex items-center gap-3">
+<img alt="Avatar" class="w-8 h-8 rounded-full object-cover border border-outline-variant" data-alt="A small circular avatar of a middle-aged man with a beard, wearing a plain t-shirt. Simple grey background. Clean SaaS style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWTrO5qEzi1I9Y9Ht1GrTXfywZ9A0G1jSLsLstWNXNozeNJqkVTHdh_ITXbDoDqyoD6ehcED23nZhKcY_mNRpDKYMS4ndVbT2Qtyv8zr5WYmaR9zxrWfHLa8Er6UoUAyBrVZ4f0d9VMuF8T0O8TgOeJ-zhNt5CKnZV5xg0vKWzAdj6TSxXoMvfwhLScr_bIH3_CVpTZlaDdnsc0JGowdmR210KnxxJHvzGoHaiuKDNT3coOo_O3m1Iw5pU1gEOpbxpUxn_24h2Wco"/>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-medium">David Smith</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant text-[12px]">david@freelance.net</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-surface-variant text-on-surface-variant">
+                                        Free
+                                    </span>
+</td>
+<td class="py-3 px-4 font-body-sm text-body-sm text-on-surface">Mar 05, 2021</td>
+<td class="py-3 px-4 font-body-sm text-body-sm text-on-surface-variant">-</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#10B981]/10 text-[#059669]">
+                                        Active
+                                    </span>
+</td>
+<td class="py-3 px-4 text-right">
+<button class="inline-flex items-center justify-center px-3 py-1.5 border border-primary-container text-primary-container rounded-full hover:bg-primary-container/5 transition-colors font-label-md text-[13px]">
+                                        Upgrade
+                                    </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="p-4 border-t border-outline-variant flex items-center justify-between bg-surface">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Showing 1 to 5 of 12,450 results</span>
+<div class="flex gap-1">
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface-variant hover:bg-surface-container-low transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 0;">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded bg-primary-container text-on-primary font-label-sm">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface hover:bg-surface-container-low transition-colors font-label-sm">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface hover:bg-surface-container-low transition-colors font-label-sm">3</button>
+<span class="w-8 h-8 flex items-center justify-center text-on-surface-variant">...</span>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface hover:bg-surface-container-low transition-colors font-label-sm">249</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface-variant hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 0;">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

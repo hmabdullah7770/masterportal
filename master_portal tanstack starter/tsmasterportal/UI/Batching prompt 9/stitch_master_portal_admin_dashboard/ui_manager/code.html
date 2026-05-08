@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>UI Manager - Master Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    "colors": {
+                        "on-secondary-container": "#5c6274",
+                        "surface-container-low": "#f9f1ff",
+                        "on-surface": "#1d1a24",
+                        "primary-fixed-dim": "#d2bbff",
+                        "on-secondary-fixed": "#141b2b",
+                        "surface-container-high": "#ede5f4",
+                        "secondary-fixed": "#dce2f7",
+                        "tertiary": "#7d3d00",
+                        "on-secondary-fixed-variant": "#404758",
+                        "on-primary-container": "#ede0ff",
+                        "inverse-primary": "#d2bbff",
+                        "on-tertiary-container": "#ffe0cd",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed-dim": "#c0c6db",
+                        "surface-dim": "#dfd7e6",
+                        "surface-container-highest": "#e8dfee",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#ffb784",
+                        "on-background": "#1d1a24",
+                        "outline": "#7b7487",
+                        "on-primary": "#ffffff",
+                        "primary": "#630ed4",
+                        "primary-fixed": "#eaddff",
+                        "on-primary-fixed-variant": "#5a00c6",
+                        "tertiary-fixed": "#ffdcc6",
+                        "on-tertiary-fixed-variant": "#713700",
+                        "on-primary-fixed": "#25005a",
+                        "outline-variant": "#ccc3d8",
+                        "inverse-on-surface": "#f6eefc",
+                        "surface": "#fef7ff",
+                        "background": "#fef7ff",
+                        "tertiary-container": "#a15100",
+                        "on-tertiary-fixed": "#301400",
+                        "secondary": "#575e70",
+                        "inverse-surface": "#332f39",
+                        "surface-bright": "#fef7ff",
+                        "surface-container": "#f3ebfa",
+                        "primary-container": "#7c3aed",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#d9dff5",
+                        "surface-variant": "#e8dfee",
+                        "on-secondary": "#ffffff",
+                        "surface-tint": "#732ee4",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "on-surface-variant": "#4a4455"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "unit": "4px",
+                        "sidebar_width": "260px",
+                        "xl": "40px",
+                        "sm": "8px",
+                        "header_height": "64px",
+                        "lg": "24px",
+                        "container_max_width": "1280px",
+                        "xs": "4px"
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "h1": ["30px", { "lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "display": ["36px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "1.2", "fontWeight": "500" }],
+                        "h2": ["24px", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "h3": ["20px", { "lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface-container text-on-surface antialiased min-h-screen flex">
+<!-- SideNavBar -->
+<aside class="bg-surface dark:bg-surface-container-lowest fixed left-0 top-0 h-screen w-[260px] border-r border-outline-variant dark:border-outline z-50">
+<div class="p-lg">
+<h1 class="font-h3 text-h3 font-semibold text-primary dark:text-primary-fixed">Master Portal</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Admin Control</p>
+</div>
+<nav class="flex flex-col h-full py-lg overflow-y-auto px-sm gap-y-sm">
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 font-body-sm text-body-sm rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">home</span>
+                Home
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 font-body-sm text-body-sm rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-primary dark:text-primary-fixed bg-primary-container/10 dark:bg-primary-container/20 rounded-lg font-body-sm text-body-sm hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">edit_note</span>
+                UI Manager
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 font-body-sm text-body-sm rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">settings_applications</span>
+                Functionality Manager
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 font-body-sm text-body-sm rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">group</span>
+                User Management
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 font-body-sm text-body-sm rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">devices</span>
+                Device Info
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 font-body-sm text-body-sm rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">autorenew</span>
+                Subscriptions
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 font-body-sm text-body-sm rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">ads_click</span>
+                Ads Manager
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 font-body-sm text-body-sm rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">api</span>
+                API Control
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 font-body-sm text-body-sm rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">description</span>
+                App Logs
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 font-body-sm text-body-sm rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">terminal</span>
+                Server Logs
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 font-body-sm text-body-sm rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">database</span>
+                Database Performance
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 font-body-sm text-body-sm rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">smart_toy</span>
+                AI Manager
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 font-body-sm text-body-sm rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">key</span>
+                Permissions
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 font-body-sm text-body-sm rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">payments</span>
+                Revenue
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 font-body-sm text-body-sm rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">star</span>
+                Ratings &amp; Shares
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 font-body-sm text-body-sm rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">account_balance</span>
+                Payment Gateway
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-200 font-body-sm text-body-sm rounded-lg mb-xl" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">system_update</span>
+                OTA Updates
+            </a>
+</nav>
+</aside>
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-container-lowest fixed top-0 right-0 h-[64px] z-40 border-b border-outline-variant dark:border-outline shadow-sm dark:shadow-none flex items-center justify-between px-lg w-[calc(100%-260px)] ml-auto">
+<div class="flex items-center flex-1">
+<h2 class="font-h2 text-h2 font-bold text-on-surface dark:text-on-surface hidden md:block">UI Manager</h2>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container transition-all rounded-full Focus: ring-2 ring-primary/20 transition-all">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-primary-container overflow-hidden border border-outline-variant flex-shrink-0 cursor-pointer">
+<img alt="Admin Avatar" class="w-full h-full object-cover" data-alt="A small circular avatar placeholder image showing a generated abstract profile picture with initials. Minimalist SaaS style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiMxTxhOwnyvYBZm3UDU_CS2uvHQi8XXd48SMvBav1J5_Ckh7QkFD9f3_Q1h7lTYfda9erkYFUbSZrNd2_DIstOgVcokUYwaaS-WqbLsw46ZKs_XoLpZUA5ks2yoWdEshfQmdtNN8U05c5qpM7uzKYWJEtl4ulWZiUTubP_I2pQMA1fbj2nexqTyisuCMySkp_qhJ5p5HNmtUh9XziVHrXUwCfocqrz7S_QXi4V8shMrWa-QC1r9Gu45xiKpE2MueuGt3ReISNyV4"/>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="ml-[260px] mt-[64px] flex-1 p-lg max-w-[1280px] mx-auto w-full">
+<!-- Header & Toggles -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-xl gap-4">
+<div>
+<h3 class="font-h1 text-h1 text-on-surface mb-1">Theme Configuration</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Customize the visual identity of your application across modes.</p>
+</div>
+<div class="flex bg-surface-container-high rounded-full p-1 border border-outline-variant/30">
+<button class="px-6 py-2 rounded-full font-label-md text-label-md bg-surface text-primary shadow-sm border border-outline-variant/20 transition-all">Light Mode</button>
+<button class="px-6 py-2 rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all">Dark Mode</button>
+</div>
+</div>
+<!-- Two Column Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<!-- Left Column: Controls -->
+<div class="lg:col-span-8 flex flex-col gap-lg">
+<!-- Color Tokens Card -->
+<div class="bg-surface rounded-xl border border-outline-variant shadow-sm p-lg">
+<h4 class="font-h3 text-h3 text-on-surface border-b border-outline-variant/50 pb-4 mb-6">Color Tokens</h4>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+<!-- Primary -->
+<div class="flex items-center justify-between group">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg shadow-sm border border-outline-variant bg-primary"></div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface">Primary</label>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Main brand color</span>
+</div>
+</div>
+<input class="w-24 px-3 py-1.5 font-mono text-sm bg-surface-container border border-outline-variant rounded-md text-on-surface focus:ring-2 focus:ring-primary focus:border-primary transition-all uppercase" type="text" value="#630ED4"/>
+</div>
+<!-- Secondary -->
+<div class="flex items-center justify-between group">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg shadow-sm border border-outline-variant bg-secondary"></div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface">Secondary</label>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Supporting accents</span>
+</div>
+</div>
+<input class="w-24 px-3 py-1.5 font-mono text-sm bg-surface-container border border-outline-variant rounded-md text-on-surface focus:ring-2 focus:ring-primary focus:border-primary transition-all uppercase" type="text" value="#575E70"/>
+</div>
+<!-- Background -->
+<div class="flex items-center justify-between group">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg shadow-sm border border-outline-variant bg-background"></div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface">Background</label>
+<span class="font-label-sm text-label-sm text-on-surface-variant">App canvas</span>
+</div>
+</div>
+<input class="w-24 px-3 py-1.5 font-mono text-sm bg-surface-container border border-outline-variant rounded-md text-on-surface focus:ring-2 focus:ring-primary focus:border-primary transition-all uppercase" type="text" value="#FEF7FF"/>
+</div>
+<!-- Text -->
+<div class="flex items-center justify-between group">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg shadow-sm border border-outline-variant bg-on-surface"></div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface">Text Primary</label>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Main typography</span>
+</div>
+</div>
+<input class="w-24 px-3 py-1.5 font-mono text-sm bg-surface-container border border-outline-variant rounded-md text-on-surface focus:ring-2 focus:ring-primary focus:border-primary transition-all uppercase" type="text" value="#1D1A24"/>
+</div>
+<!-- Success -->
+<div class="flex items-center justify-between group">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg shadow-sm border border-outline-variant bg-[#10B981]"></div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface">Success</label>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Positive actions</span>
+</div>
+</div>
+<input class="w-24 px-3 py-1.5 font-mono text-sm bg-surface-container border border-outline-variant rounded-md text-on-surface focus:ring-2 focus:ring-primary focus:border-primary transition-all uppercase" type="text" value="#10B981"/>
+</div>
+<!-- Error -->
+<div class="flex items-center justify-between group">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg shadow-sm border border-outline-variant bg-error"></div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface">Error</label>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Destructive actions</span>
+</div>
+</div>
+<input class="w-24 px-3 py-1.5 font-mono text-sm bg-surface-container border border-outline-variant rounded-md text-on-surface focus:ring-2 focus:ring-primary focus:border-primary transition-all uppercase" type="text" value="#BA1A1A"/>
+</div>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="flex items-center justify-end gap-4 mt-4">
+<button class="px-6 py-2.5 rounded-full font-label-md text-label-md text-on-surface bg-surface border border-outline-variant hover:bg-surface-container-low transition-colors shadow-sm">
+                        Reset to Default
+                    </button>
+<button class="px-6 py-2.5 rounded-full font-label-md text-label-md text-on-primary bg-primary hover:bg-primary/90 transition-colors shadow-sm">
+                        Save Theme
+                    </button>
+</div>
+</div>
+<!-- Right Column: Preview -->
+<div class="lg:col-span-4 hidden lg:flex flex-col items-center justify-start pt-4">
+<div class="sticky top-24 w-full max-w-[300px]">
+<div class="flex justify-between items-center mb-4 px-2">
+<span class="font-label-md text-label-md text-on-surface-variant">Live Preview</span>
+<div class="flex gap-1">
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+</div>
+</div>
+<!-- Phone Mockup Frame -->
+<div class="relative w-[300px] h-[600px] bg-surface rounded-[40px] border-[8px] border-surface-container-highest shadow-xl overflow-hidden flex flex-col">
+<!-- Top Notch area -->
+<div class="absolute top-0 inset-x-0 h-6 bg-surface-container-highest rounded-b-xl w-32 mx-auto z-10"></div>
+<!-- App Preview Header -->
+<div class="bg-primary px-4 pt-10 pb-4 text-on-primary shadow-sm z-0">
+<div class="flex justify-between items-center mb-6">
+<span class="material-symbols-outlined text-[20px]">menu</span>
+<span class="font-label-sm font-semibold">Demo App</span>
+<div class="w-6 h-6 rounded-full bg-on-primary/20"></div>
+</div>
+<h5 class="font-h2 text-[20px] font-semibold">Welcome back,</h5>
+<p class="text-on-primary/80 text-sm mt-1">Here is your daily summary.</p>
+</div>
+<!-- App Preview Body -->
+<div class="flex-1 bg-background p-4 flex flex-col gap-4 overflow-y-auto">
+<!-- Card 1 -->
+<div class="bg-surface rounded-xl p-4 shadow-sm border border-outline-variant/30">
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-[16px]">show_chart</span>
+</div>
+<span class="font-label-sm font-semibold text-on-surface">Statistics</span>
+</div>
+<span class="text-xs text-primary font-medium">View All</span>
+</div>
+<div class="h-16 w-full rounded-md bg-surface-container-low border border-outline-variant/20 flex items-center justify-center">
+<div class="w-3/4 h-8 border-b-2 border-primary/30 relative">
+<div class="absolute bottom-0 left-0 w-1/2 h-full border-b-2 border-primary"></div>
+</div>
+</div>
+</div>
+<!-- Buttons -->
+<div class="flex gap-2">
+<button class="flex-1 py-2 bg-primary text-on-primary rounded-full text-xs font-semibold shadow-sm">Primary Action</button>
+<button class="flex-1 py-2 bg-surface text-on-surface border border-outline-variant rounded-full text-xs font-semibold shadow-sm">Secondary</button>
+</div>
+<!-- List Item -->
+<div class="bg-surface rounded-xl p-3 shadow-sm border border-outline-variant/30 flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]">folder</span>
+</div>
+<div class="flex-1">
+<div class="text-sm font-medium text-on-surface">Project Alpha</div>
+<div class="text-xs text-on-surface-variant">Updated 2h ago</div>
+</div>
+<div class="w-2 h-2 rounded-full bg-error"></div>
+</div>
+</div>
+<!-- Bottom Nav -->
+<div class="bg-surface border-t border-outline-variant/30 py-3 px-6 flex justify-between items-center z-10">
+<span class="material-symbols-outlined text-primary">home</span>
+<span class="material-symbols-outlined text-outline-variant">search</span>
+<span class="material-symbols-outlined text-outline-variant">notifications</span>
+<span class="material-symbols-outlined text-outline-variant">person</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>
