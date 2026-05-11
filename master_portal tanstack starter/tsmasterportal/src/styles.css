@@ -7,6 +7,43 @@
   --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
 }
 
+/* Master Portal admin shell (sidebar + main) */
+.master-portal-app {
+  --mp-sidebar-bg: #faf8fc;
+  --mp-sidebar-border: rgba(91, 33, 182, 0.1);
+  --mp-main-bg: #f3f4f6;
+  --mp-topbar-bg: rgba(255, 255, 255, 0.92);
+  --mp-topbar-border: rgba(91, 33, 182, 0.08);
+  --mp-brand: #5b21b6;
+  --mp-accent: #7c3aed;
+  --mp-text: #1f2937;
+  --mp-muted: #6b7280;
+  --mp-nav: #000000;
+  --mp-nav-active: #000000;
+  --mp-hover-bg: rgba(124, 58, 237, 0.06);
+  --mp-active-bg: rgba(124, 58, 237, 0.12);
+  --mp-input-bg: #f5f3ff;
+  --mp-input-border: rgba(124, 58, 237, 0.15);
+}
+
+/*
+ * Global `a` rules below use lagoon/teal and are unlayered, so they win over
+ * Tailwind utility classes. Sidebar Links must set color here.
+ */
+.master-portal-app aside nav a {
+  color: var(--mp-nav);
+  text-decoration: none;
+}
+
+.master-portal-app aside nav a:hover {
+  color: var(--mp-nav);
+}
+
+.master-portal-app aside nav a[data-status="active"] {
+  color: var(--mp-nav-active);
+  font-weight: 700;
+}
+
 :root {
   --sea-ink: #173a40;
   --sea-ink-soft: #416166;

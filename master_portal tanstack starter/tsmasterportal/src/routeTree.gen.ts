@@ -17,6 +17,7 @@ import { Route as SkillsIndexRouteImport } from './routes/skills/index'
 import { Route as DashboardIndexRouteImport } from './routes/Dashboard/index'
 import { Route as SkillsNewRouteImport } from './routes/skills/new'
 import { Route as SkillsSkillIdRouteImport } from './routes/skills/$skillId'
+import { Route as PortalModuleRouteImport } from './routes/portal/$module'
 import { Route as DashboardSkillsRouteImport } from './routes/Dashboard/skills'
 import { Route as DashboardSettingsRouteImport } from './routes/Dashboard/settings'
 import { Route as UsersUsernameSkillsSkillIdRouteImport } from './routes/users/$username/skills/$skillId'
@@ -61,6 +62,11 @@ const SkillsSkillIdRoute = SkillsSkillIdRouteImport.update({
   path: '/skills/$skillId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PortalModuleRoute = PortalModuleRouteImport.update({
+  id: '/portal/$module',
+  path: '/portal/$module',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DashboardSkillsRoute = DashboardSkillsRouteImport.update({
   id: '/skills',
   path: '/skills',
@@ -85,6 +91,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/Dashboard/settings': typeof DashboardSettingsRoute
   '/Dashboard/skills': typeof DashboardSkillsRoute
+  '/portal/$module': typeof PortalModuleRoute
   '/skills/$skillId': typeof SkillsSkillIdRoute
   '/skills/new': typeof SkillsNewRoute
   '/Dashboard/': typeof DashboardIndexRoute
@@ -97,6 +104,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/Dashboard/settings': typeof DashboardSettingsRoute
   '/Dashboard/skills': typeof DashboardSkillsRoute
+  '/portal/$module': typeof PortalModuleRoute
   '/skills/$skillId': typeof SkillsSkillIdRoute
   '/skills/new': typeof SkillsNewRoute
   '/Dashboard': typeof DashboardIndexRoute
@@ -111,6 +119,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/Dashboard/settings': typeof DashboardSettingsRoute
   '/Dashboard/skills': typeof DashboardSkillsRoute
+  '/portal/$module': typeof PortalModuleRoute
   '/skills/$skillId': typeof SkillsSkillIdRoute
   '/skills/new': typeof SkillsNewRoute
   '/Dashboard/': typeof DashboardIndexRoute
@@ -126,6 +135,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/Dashboard/settings'
     | '/Dashboard/skills'
+    | '/portal/$module'
     | '/skills/$skillId'
     | '/skills/new'
     | '/Dashboard/'
@@ -138,6 +148,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/Dashboard/settings'
     | '/Dashboard/skills'
+    | '/portal/$module'
     | '/skills/$skillId'
     | '/skills/new'
     | '/Dashboard'
@@ -151,6 +162,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/Dashboard/settings'
     | '/Dashboard/skills'
+    | '/portal/$module'
     | '/skills/$skillId'
     | '/skills/new'
     | '/Dashboard/'
@@ -163,6 +175,7 @@ export interface RootRouteChildren {
   DashboardRouteRoute: typeof DashboardRouteRouteWithChildren
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
+  PortalModuleRoute: typeof PortalModuleRoute
   SkillsSkillIdRoute: typeof SkillsSkillIdRoute
   SkillsNewRoute: typeof SkillsNewRoute
   SkillsIndexRoute: typeof SkillsIndexRoute
@@ -227,6 +240,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SkillsSkillIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/portal/$module': {
+      id: '/portal/$module'
+      path: '/portal/$module'
+      fullPath: '/portal/$module'
+      preLoaderRoute: typeof PortalModuleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/Dashboard/skills': {
       id: '/Dashboard/skills'
       path: '/skills'
@@ -272,6 +292,7 @@ const rootRouteChildren: RootRouteChildren = {
   DashboardRouteRoute: DashboardRouteRouteWithChildren,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
+  PortalModuleRoute: PortalModuleRoute,
   SkillsSkillIdRoute: SkillsSkillIdRoute,
   SkillsNewRoute: SkillsNewRoute,
   SkillsIndexRoute: SkillsIndexRoute,
