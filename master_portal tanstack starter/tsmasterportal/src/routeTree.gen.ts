@@ -13,6 +13,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as DashboardRouteRouteImport } from './routes/Dashboard/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as UseMangmentIndexRouteImport } from './routes/useMangment/index'
 import { Route as SkillsIndexRouteImport } from './routes/skills/index'
 import { Route as DashboardIndexRouteImport } from './routes/Dashboard/index'
 import { Route as SkillsNewRouteImport } from './routes/skills/new'
@@ -20,6 +21,7 @@ import { Route as SkillsSkillIdRouteImport } from './routes/skills/$skillId'
 import { Route as PortalModuleRouteImport } from './routes/portal/$module'
 import { Route as DashboardSkillsRouteImport } from './routes/Dashboard/skills'
 import { Route as DashboardSettingsRouteImport } from './routes/Dashboard/settings'
+import { Route as DashboardUsersIndexRouteImport } from './routes/Dashboard/users/index'
 import { Route as UsersUsernameSkillsSkillIdRouteImport } from './routes/users/$username/skills/$skillId'
 
 const ContactRoute = ContactRouteImport.update({
@@ -40,6 +42,11 @@ const DashboardRouteRoute = DashboardRouteRouteImport.update({
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UseMangmentIndexRoute = UseMangmentIndexRouteImport.update({
+  id: '/useMangment/',
+  path: '/useMangment/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SkillsIndexRoute = SkillsIndexRouteImport.update({
@@ -77,6 +84,11 @@ const DashboardSettingsRoute = DashboardSettingsRouteImport.update({
   path: '/settings',
   getParentRoute: () => DashboardRouteRoute,
 } as any)
+const DashboardUsersIndexRoute = DashboardUsersIndexRouteImport.update({
+  id: '/users/',
+  path: '/users/',
+  getParentRoute: () => DashboardRouteRoute,
+} as any)
 const UsersUsernameSkillsSkillIdRoute =
   UsersUsernameSkillsSkillIdRouteImport.update({
     id: '/users/$username/skills/$skillId',
@@ -96,6 +108,8 @@ export interface FileRoutesByFullPath {
   '/skills/new': typeof SkillsNewRoute
   '/Dashboard/': typeof DashboardIndexRoute
   '/skills/': typeof SkillsIndexRoute
+  '/useMangment/': typeof UseMangmentIndexRoute
+  '/Dashboard/users/': typeof DashboardUsersIndexRoute
   '/users/$username/skills/$skillId': typeof UsersUsernameSkillsSkillIdRoute
 }
 export interface FileRoutesByTo {
@@ -109,6 +123,8 @@ export interface FileRoutesByTo {
   '/skills/new': typeof SkillsNewRoute
   '/Dashboard': typeof DashboardIndexRoute
   '/skills': typeof SkillsIndexRoute
+  '/useMangment': typeof UseMangmentIndexRoute
+  '/Dashboard/users': typeof DashboardUsersIndexRoute
   '/users/$username/skills/$skillId': typeof UsersUsernameSkillsSkillIdRoute
 }
 export interface FileRoutesById {
@@ -124,6 +140,8 @@ export interface FileRoutesById {
   '/skills/new': typeof SkillsNewRoute
   '/Dashboard/': typeof DashboardIndexRoute
   '/skills/': typeof SkillsIndexRoute
+  '/useMangment/': typeof UseMangmentIndexRoute
+  '/Dashboard/users/': typeof DashboardUsersIndexRoute
   '/users/$username/skills/$skillId': typeof UsersUsernameSkillsSkillIdRoute
 }
 export interface FileRouteTypes {
@@ -140,6 +158,8 @@ export interface FileRouteTypes {
     | '/skills/new'
     | '/Dashboard/'
     | '/skills/'
+    | '/useMangment/'
+    | '/Dashboard/users/'
     | '/users/$username/skills/$skillId'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -153,6 +173,8 @@ export interface FileRouteTypes {
     | '/skills/new'
     | '/Dashboard'
     | '/skills'
+    | '/useMangment'
+    | '/Dashboard/users'
     | '/users/$username/skills/$skillId'
   id:
     | '__root__'
@@ -167,6 +189,8 @@ export interface FileRouteTypes {
     | '/skills/new'
     | '/Dashboard/'
     | '/skills/'
+    | '/useMangment/'
+    | '/Dashboard/users/'
     | '/users/$username/skills/$skillId'
   fileRoutesById: FileRoutesById
 }
@@ -179,6 +203,7 @@ export interface RootRouteChildren {
   SkillsSkillIdRoute: typeof SkillsSkillIdRoute
   SkillsNewRoute: typeof SkillsNewRoute
   SkillsIndexRoute: typeof SkillsIndexRoute
+  UseMangmentIndexRoute: typeof UseMangmentIndexRoute
   UsersUsernameSkillsSkillIdRoute: typeof UsersUsernameSkillsSkillIdRoute
 }
 
@@ -210,6 +235,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/useMangment/': {
+      id: '/useMangment/'
+      path: '/useMangment'
+      fullPath: '/useMangment/'
+      preLoaderRoute: typeof UseMangmentIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/skills/': {
@@ -261,6 +293,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardSettingsRouteImport
       parentRoute: typeof DashboardRouteRoute
     }
+    '/Dashboard/users/': {
+      id: '/Dashboard/users/'
+      path: '/users'
+      fullPath: '/Dashboard/users/'
+      preLoaderRoute: typeof DashboardUsersIndexRouteImport
+      parentRoute: typeof DashboardRouteRoute
+    }
     '/users/$username/skills/$skillId': {
       id: '/users/$username/skills/$skillId'
       path: '/users/$username/skills/$skillId'
@@ -275,12 +314,14 @@ interface DashboardRouteRouteChildren {
   DashboardSettingsRoute: typeof DashboardSettingsRoute
   DashboardSkillsRoute: typeof DashboardSkillsRoute
   DashboardIndexRoute: typeof DashboardIndexRoute
+  DashboardUsersIndexRoute: typeof DashboardUsersIndexRoute
 }
 
 const DashboardRouteRouteChildren: DashboardRouteRouteChildren = {
   DashboardSettingsRoute: DashboardSettingsRoute,
   DashboardSkillsRoute: DashboardSkillsRoute,
   DashboardIndexRoute: DashboardIndexRoute,
+  DashboardUsersIndexRoute: DashboardUsersIndexRoute,
 }
 
 const DashboardRouteRouteWithChildren = DashboardRouteRoute._addFileChildren(
@@ -296,6 +337,7 @@ const rootRouteChildren: RootRouteChildren = {
   SkillsSkillIdRoute: SkillsSkillIdRoute,
   SkillsNewRoute: SkillsNewRoute,
   SkillsIndexRoute: SkillsIndexRoute,
+  UseMangmentIndexRoute: UseMangmentIndexRoute,
   UsersUsernameSkillsSkillIdRoute: UsersUsernameSkillsSkillIdRoute,
 }
 export const routeTree = rootRouteImport

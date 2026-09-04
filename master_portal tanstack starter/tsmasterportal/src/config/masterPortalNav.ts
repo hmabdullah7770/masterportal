@@ -35,7 +35,7 @@ export const masterPortalNav: MasterPortalNavItem[] = [
 		to: "/portal/functionality-manager",
 		icon: Workflow,
 	},
-	{ label: "User Management", to: "/portal/user-management", icon: Users },
+	{ label: "User Management", to: "/useMangment", icon: Users },
 	{ label: "Device Info", to: "/portal/device-info", icon: Smartphone },
 	{ label: "Subscriptions", to: "/portal/subscriptions", icon: CreditCard },
 	{ label: "Ads Manager", to: "/portal/ads-manager", icon: Megaphone },
