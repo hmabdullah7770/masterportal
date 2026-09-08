@@ -21,6 +21,10 @@ function toUserRow(user: any): UserRow {
 		username: user.username ?? "",
 		email: user.email ?? "",
 		fullName: user.fullName ?? "",
+		gender: user.gender ?? "",
+		age: user.age ?? null,
+		bio: user.bio ?? "",
+		avatar: user.avatar ?? "",
 		createdAt:
 			user.createdAt instanceof Date
 				? user.createdAt.toISOString()
@@ -29,19 +33,20 @@ function toUserRow(user: any): UserRow {
 					: null,
 	};
 }
-
 	
-
-
 /** List users for the User Management dashboard. */
 export const getAllUsers = createServerFn({ method: "GET" })
 	.inputValidator(getUsersSchema)
 	.handler(
 		async ({ data }: { data: GetUsersInput }): Promise<GetUsersResponse> => {
-			const page = data.page ?? 1;
-			const limit = data.limit ?? 20;
-			const search = data.search ?? "";
-		await connectDB();
+    console.log("SERVER: handler started", data);
+    const page = data.page ?? 1;
+    const limit = data.limit ?? 20;
+    const search = data.search ?? "";
+
+    console.log("SERVER: connecting to db");
+    await connectDB();
+    console.log("SERVER: db connected");
 
 			if (!mongoose.connection.db) {
 				throw new Error("Database connection not established");

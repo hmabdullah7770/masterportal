@@ -1,13 +1,3 @@
-// import React from 'react'
-
-// const UserManagmentGrid = () => {
-//   return (
-//     <div>UserManagmentGrid</div>
-//   )
-// }
-
-// export default UserManagmentGrid
-
 import {
   Box,
   Paper,
@@ -18,11 +8,12 @@ import {
   TableHead,
   TableRow,
   TextField,
+  Button,
+  Stack,
+  Typography,
 } from "@mui/material";
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { useUserManagmentContext } from "../context";
-// import { Loader } from "Shared/Common/Loader";
-// import NoRecord from "../../../Shared/Common/NoRecord";
 import Row from "./Row";
 
 const columns = [
@@ -44,18 +35,11 @@ const UserManagmentGrid = () => {
     setFilterData,
     searchValue,
     setSearchValue,
-    loadGridData,
+    total,
+    totalPages,
+    goToNextPage,
+    goToPrevPage,
   } = useUserManagmentContext();
-
-  const isFirstRender = useRef(true);
-
-  useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
-    loadGridData(true);
-  }, [filterData.pageNumber, filterData.pageSize]);
 
   const handleSearchKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") {
@@ -64,7 +48,6 @@ const UserManagmentGrid = () => {
         search: searchValue,
         pageNumber: 1,
       }));
-      loadGridData(true);
     }
   };
 
@@ -118,23 +101,57 @@ const UserManagmentGrid = () => {
               <TableBody>
                 {loading ? (
                   <TableRow>
-                    <TableCell colSpan={columns.length}>
-                      {/* <Loader /> */}
-                    </TableCell>
+                    <TableCell colSpan={columns.length}>Loading...</TableCell>
                   </TableRow>
                 ) : data.gridData?.length ? (
                   data.gridData.map((RowData: any) => (
-                    <Row key={RowData._id} RowData={RowData} />
+                    <Row key={RowData.id} RowData={RowData} />
                   ))
                 ) : (
-                  <p>...</p>
-                  // <NoRecord />
+                  <TableRow>
+                    <TableCell colSpan={columns.length}>
+                      No records found.
+                    </TableCell>
+                  </TableRow>
                 )}
               </TableBody>
             </Table>
           </TableContainer>
         </div>
       </Box>
+
+      {/* Pagination controls */}
+      <Stack
+         direction="row"
+  sx={{
+    justifyContent: "space-between",
+    alignItems: "center",
+    mt: 2,
+  }}
+      >
+        <Typography variant="body2" color="text.secondary">
+          Page {filterData.pageNumber} of {totalPages} ({total} total users)
+        </Typography>
+
+        <Stack direction="row" spacing={1}>
+          <Button
+            variant="outlined"
+            size="small"
+            onClick={goToPrevPage}
+            disabled={filterData.pageNumber <= 1}
+          >
+            Previous
+          </Button>
+          <Button
+            variant="outlined"
+            size="small"
+            onClick={goToNextPage}
+            disabled={filterData.pageNumber >= totalPages}
+          >
+            Next
+          </Button>
+        </Stack>
+      </Stack>
     </div>
   );
 };
